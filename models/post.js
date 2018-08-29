@@ -31,7 +31,7 @@ module.exports = function(sequelize, DataTypes) {
             }
         });
 
-        Post.hasMany(models.Comment,{
+        Post.hasMany(models.Comments,{
           onDelete: "cascade"
         });
       };

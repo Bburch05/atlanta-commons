@@ -30,9 +30,9 @@ module.exports = function(sequelize, DataTypes) {
         Users.hasMany(models.Post, {
           onDelete: "cascade"
         });
-        Users.hasMany(models.Comment,{
+        Users.hasMany(models.Comments,{
           onDelete: "cascade"
-        })
+        });
       };
 
     return Users;
