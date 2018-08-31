@@ -10,16 +10,22 @@ module.exports = function(sequelize, DataTypes) {
     },
     postType: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        equals: ["issue", "event"]
-      }
+      allowNull: false
     },
     image: DataTypes.STRING,
     address: DataTypes.STRING,
     neighborhood: {
       type: DataTypes.STRING,
       allowNull: false
+    }
+  });
+
+  Post.associate = function(models) {
+    Post.belongsTo(models.Users, {
+      foreignKey: {
+        allowNull: false
+      }
+    }
     }
   });
 
