@@ -6,7 +6,7 @@
             <div class="panel panel-info" style="boder-radius:5px;" >
                     <div class="panel-heading">
                         <div class="panel-title"><h2 style="color:white">Log In</h2></div>
-                        <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#"><h4 style="color:wheat">Forgot password?</h4></a></div>
+                        <div style="float:right; font-size: 40%; position: relative; top:-80px"><button id="forgotBtn" style="height:50px;width:190px;boder:0px;background:#f4511e"><h4 style="color:wheat">Forgot password?</h4></a></div>
                     </div>     
 
                     <div style="padding-top:30px" class="panel-body" >
@@ -74,7 +74,7 @@
                                                       
                                     
                                 <div class="form-group">
-                                    <label for="username" class="col-md-3 control-label">Username</label>
+                                    <label for="username" class="col-md-3 control-label us">Username</label>
                                     <div class="col-md-9">
                                         <input type="text" class="form-control" name="username" placeholder="Username">
                                     </div>
@@ -89,7 +89,6 @@
                                 <div class="form-group">
                                     <label for="email" class="col-md-3 control-label">Email</label>
                                     <div class="col-md-9">
-                                        {{!-- <input type="email" class="form-control" name="email" placeholder="Email Address"> --}}
                                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 
@@ -236,7 +235,7 @@
                                     <label for="profilepic">Profile Picture</label>
                                     </div>
                                     <div class="col-md-9">
-                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                         <input type="file" class="form-control" name="myImage" accept="image/*" />
                                     </div>
                                 </div>
                                 <div class="form-group">
