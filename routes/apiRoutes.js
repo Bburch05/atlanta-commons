@@ -12,7 +12,7 @@ module.exports = function(app) {
 
     db.Post.findAll({
       limit: 10,
-      order: [["id","DESC"]],
+      order: [["id", "DESC"]],
       offset: queryOffset,
       include: [
         {
@@ -35,11 +35,11 @@ module.exports = function(app) {
       queryOffset = parseInt(req.params.offset);
     }
 
-    var searchPostType = req.params.postType.toLowerCase()
+    var searchPostType = req.params.postType.toLowerCase();
 
     db.Post.findAll({
       limit: 10,
-      order: [["id","DESC"]],
+      order: [["id", "DESC"]],
       offset: queryOffset,
       where: {
         postType: searchPostType
@@ -79,19 +79,17 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/users/:id",function(req,res){
+  app.get("/api/users/:id", function(req, res) {
     db.Users.findOne({
-      where: {id: req.params.id}
-    }).then(function(result){
-      res.json(result)
-    })
-  })
+      where: { id: req.params.id }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
 
   // Create a new example
   app.post("/api/posts", function(req, res) {
-    db.Post.create({
-
-    }).then(function(dbExample) {
+    db.Post.create({}).then(function(dbExample) {
       res.json(dbExample);
     });
   });

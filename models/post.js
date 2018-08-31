@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    postType:{
+    postType: {
       type: DataTypes.STRING,
       allowNull: false
     },
