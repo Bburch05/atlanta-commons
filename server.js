@@ -2,6 +2,8 @@ require("dotenv").config();
 var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
+var gmail = require("gmail-send");
+console.log(gmail);
 
 var db = require("./models");
 
@@ -23,6 +25,7 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
+require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
 var syncOptions = { force: false };

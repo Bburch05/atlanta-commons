@@ -1,7 +1,23 @@
 .list-group-item {
   line-height: 2.5;
 }
+.us{
+  margin-top: 20px;
+  padding-top: 5px;
+}
+.issbtn{
+  height: 70px;
+  width: 600px;
+  box-shadow: #806a63 5px 5px 40px 5px;
+  background-color: #818181;
+}
+.eventbtn{
+  height: 70px;
+  width: 600px;
+  box-shadow: #806a63 5px 5px 40px 5px;
+  background-color: #818181;
 
+}
 
 body {
   font: 400 15px Lato, sans-serif;

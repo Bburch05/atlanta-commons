@@ -14,9 +14,12 @@
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
     "dropbox": "^4.0.9",
+    "emailjs": "^2.2.0",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
+    "gmail-send": "^1.2.14",
     "mysql2": "^1.5.3",
+    "nodemailer": "^4.6.8",
     "nodemon": "^1.18.3",
     "sequelize": "^4.38.0"
   },
