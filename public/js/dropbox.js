@@ -1,14 +1,13 @@
-//<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-var CLOUDINARY_URL = "	https://api.cloudinary.com/v1_1/atlanta-commons/upload";
+var CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/atlanta-commons/upload";
 var CLOUDINARY_UPLOAD_PRESET = "qie6uzuq";
 //Need to match up to the div with the User image tag
 var imgThumbnail = $("#userPic");
 //Need to match up with the picture upload input
-var imgUpload = $("#imgUploadInput");
+var imgUpload = $("#profile-pic");
 
-imgUpload.on("click", function(event) {
-  var userPic = event.target.files[0];
+$("#btn-signup").on("click", function(event) {
+  event.preventDefault();
+  var userPic = imgUpload.src();
   var formData = new FormData();
   formData.append("file", userPic);
   formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
@@ -29,5 +28,3 @@ imgUpload.on("click", function(event) {
       console.log(err);
     });
 });
-
-//preset name qie6uzuq
