@@ -7,7 +7,7 @@ var $submitBtnUser = $(".div1");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  savePost: function(post) {
+  savePost: function (post) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
@@ -17,39 +17,35 @@ var API = {
       data: JSON.stringify(post)
     });
   },
-  getPosts: function() {
+  getPosts: function () {
     return $.ajax({
       url: "api/posts/",
       type: "GET"
     });
   },
-  getEvents: function() {
+  getEvents: function () {
     return $.ajax({
       url: "api/event/",
       type: "GET"
     });
   },
-  getIssues: function() {
+  getIssues: function () {
     return $.ajax({
       url: "api/issue/",
       type: "GET"
     });
   },
-  deletePost: function(id) {
+  deletePost: function (id) {
     return $.ajax({
       url: "api/posts/" + id,
       type: "DELETE"
     });
   },
-  getAllUsers: function(){
-      return $.ajax({
-        url:"/api/Allusers",
-        type:"GET",
-        data:function(data){
-            var id= data[0];
-            console.log(id);
-        }
-      });
+  getAllUsers: function() {
+    return $.ajax({
+      url: "/api/Allusers",
+      type: "GET"
+    });
   }
 };
 
@@ -86,14 +82,14 @@ var API = {
 // Save the new example to the db and refresh the list
 var getAllUsers = function(event) {
   event.preventDefault();
-  API.getAllUsers(data).then(function() {
+  API.getAllUsers().then(function() {
     location.reload();
-    console.log(data[0]);
+
   });
-    
+
   //placeholder for file upload
   //placeholder for User Id
-  }
+}
 
 
 // handleDeleteBtnClick is called when an example's delete button is clicked

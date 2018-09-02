@@ -40,6 +40,9 @@ module.exports = function(app) {
     };
     res.render("contact", hbsObject);
   });
+  app.get("/a", function(req, res) {
+    res.render("a");
+  });
 
   app.get("/Log", function(req, res) {
     var hbsObject = {
