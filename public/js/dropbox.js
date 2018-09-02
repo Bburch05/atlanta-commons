@@ -28,3 +28,25 @@ $("#btn-signup").on("click", function(event) {
       console.log(err);
     });
 });
+
+$(document).on("click", "#btn-login", function(e) {
+  e.preventDefault;
+  var userName = $("#login-username")
+    .val()
+    .trim();
+  var userPswd = $("#login-password")
+    .val()
+    .trim();
+  //   var User = {
+  //     name: userName,
+  //     password: userPswd
+  //   };
+
+  $.get("/api/users/" + userName, function(data) {
+    if (!data) {
+      console.log("We looked but couldnt find anything");
+    } else {
+      console.log(data);
+    }
+  });
+});

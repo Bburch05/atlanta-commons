@@ -4,7 +4,6 @@ var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
-
 // The API object contains methods for each kind of request we'll make
 var API = {
   saveExample: function(example) {
