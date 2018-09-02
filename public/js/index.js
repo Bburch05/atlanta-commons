@@ -1,9 +1,9 @@
 // Get references to page elements
 var $postTitle = $("#post-title");
-var $text = $("#detail-text")
+var $text = $("#detail-text");
 var $address = $("#address");
-var $neighborhood = $("#neighborhood")
-var $submitBtn = $("#newPost")
+var $neighborhood = $("#neighborhood");
+var $submitBtn = $("#newPost");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -78,18 +78,18 @@ var handleFormSubmit = function(event) {
   event.preventDefault();
 
   //placeholder for file upload
-  var userImage = "https://i.imgur.com/TpqwWl6.jpg"
+  var userImage = "https://i.imgur.com/TpqwWl6.jpg";
   //placeholder for User Id
-  var posterId = 2
+  var posterId = 2;
 
   var post = {
-    title : $postTitle.val(),
-    text : $text.val(),
-    postType : "issue",
-    image : userImage,
-    address : $address.val(),
-    neighborhood : $neighborhood.val(),
-    UserId : posterId
+    title: $postTitle.val(),
+    text: $text.val(),
+    postType: "issue",
+    image: userImage,
+    address: $address.val(),
+    neighborhood: $neighborhood.val(),
+    UserId: posterId
   };
 
   if (!(post.text && post.title && post.address)) {

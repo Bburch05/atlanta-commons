@@ -3,26 +3,10 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-      db.Post.findAll({
-        limit: 10,
-        order: [["id", "DESC"]],
-        where: {postType : "issue"},
-        include: [
-          {
-            model: db.Users,
-            attributes: ["username", "profPic", "firstName", "lastName"]
-          }
-        ]
-      }).then(function(result) {
-        res.render("index",{Post : result});
-      });
-});
-
-  app.get("/events", function(req, res) {
     db.Post.findAll({
       limit: 10,
       order: [["id", "DESC"]],
-      where: {postType : "event"},
+      where: { postType: "issue" },
       include: [
         {
           model: db.Users,
@@ -30,7 +14,23 @@ module.exports = function(app) {
         }
       ]
     }).then(function(result) {
-      res.render("events",{Post : result});
+      res.render("index", { Post: result });
+    });
+  });
+
+  app.get("/events", function(req, res) {
+    db.Post.findAll({
+      limit: 10,
+      order: [["id", "DESC"]],
+      where: { postType: "event" },
+      include: [
+        {
+          model: db.Users,
+          attributes: ["username", "profPic", "firstName", "lastName"]
+        }
+      ]
+    }).then(function(result) {
+      res.render("events", { Post: result });
     });
   });
 
@@ -41,7 +41,7 @@ module.exports = function(app) {
     console.log(hbsObject);
     res.render("contact", hbsObject);
   });
-  
+
   app.get("/Log", function(req, res) {
     var hbsObject = {
       cats: "log"
