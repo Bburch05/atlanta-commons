@@ -38,7 +38,6 @@ module.exports = function(app) {
     var hbsObject = {
       cats: "con"
     };
-    console.log(hbsObject);
     res.render("contact", hbsObject);
   });
 
@@ -46,7 +45,6 @@ module.exports = function(app) {
     var hbsObject = {
       cats: "log"
     };
-    console.log(hbsObject);
     res.render("Log", hbsObject);
   });
 
