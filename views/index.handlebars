@@ -36,7 +36,7 @@
           <form>
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Title:</label>
-              <input type="text" class="form-control" id="issue-name" placeholder="Issue Title">
+              <input type="text" class="form-control" id="post-title" placeholder="Issue Title">
             </div>
             <div class="form-group">
               <label for="message-text" class="col-form-label">Detail:</label>
@@ -61,7 +61,7 @@
             <div class="form-group">
               <label for="neighborhood" class="col-md-6 control-label">Neighborhood</label>
               <div class="col-md-6">
-                <select name="neighborhood">
+                <select name="neighborhood" id="neighborhood">
 
                   <option value="Acworth">Acworth</option>
                   <option value="Adairsville">Adairsville</option>
@@ -181,7 +181,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Create</button>
+          <button type="button" class="btn btn-primary" id="newPost">Create</button>
         </div>
       </div>
     </div>
@@ -199,47 +199,44 @@
 
 
   <div class="container-fluid">
+    {{#each Post}}
     <div class="row" id="border1">
       <div class="col-sm-2 col-md-2 text-center">
-        <img src="./imges/logo2.png" class="img-circle imgissue" alt="Avatar">
+        <img src={{User.profPic}} class="img-circle imgissue" alt="Avatar">
       </div>
 
       <div class="col-sm-10">
         <div class="row header1">
           <div class="col-md-6">
             <h3 class="padding1 header1">
-            <p>Anja</p>
-            <small class="header1">Sep 29, 2015, 9:12 PM</small>
+            <p>{{title}}</p>
+            <p>Posted by: {{User.username}}</p>
+            <small class="header1">{{createdAt}}</small>
           </h3>
           </div>
           <div class="col-md-6">
             <h3 class="padding1 header1">
             <p>Neighborhood</p>
-            <small class="header1">Midtown</small>
+            <small class="header1">{{neighborhood}}</small>
           </h3>
           </div>
           
         </div>
         <div class="row">
-          <h3>Message:</h3>
-          <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Keep up the GREAT work! I am cheering for you!! Lorem
-            ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-            aliqua. Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p>{{text}}</p>
           <br>
 
         </div>
 
         <div class="row">
           <div class="col-sm-4">
-            <img src="./imges/logo2.png" alt="Avatar">
+            <img class="img-responsive" src={{image}} alt="eventPic">
 
           </div>
           <div class="col-sm-2"></div>
           <div class="col-sm-6">
             <h3>Location : </h3>
-            <p>770 spring st nw, atlanta, ga 30308</p>
+            <p>{{address}}</p>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3316.411492405979!2d-84.3914761847922!3d33.775870480681995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f5046684d8f1f1%3A0x71b6d8f11e4667d4!2s770+Spring+St+NW%2C+Atlanta%2C+GA+30308!5e0!3m2!1sen!2sus!4v1535673844371" width="400" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
           </div>
           
@@ -250,6 +247,7 @@
       </div>
 
     </div>
+    {{/each}}
   </div>
 
 
@@ -275,3 +273,5 @@
       </div>
     </div>
   </div>
+
+  <script src="./js/index.js"></script>

@@ -2,8 +2,8 @@ require("dotenv").config();
 var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
-var gmail = require("gmail-send");
-console.log(gmail);
+// var gmail = require("gmail-send");
+// console.log(gmail);
 
 var db = require("./models");
 

@@ -75,7 +75,7 @@ module.exports = function(app) {
         }
       ]
     }).then(function(result) {
-      res.send(result);
+      res.json(result);
     });
   });
 
@@ -89,7 +89,7 @@ module.exports = function(app) {
 
   // Create a new example
   app.post("/api/posts", function(req, res) {
-    db.Post.create({}).then(function(dbExample) {
+    db.Post.create(req.body).then(function(dbExample) {
       res.json(dbExample);
     });
   });

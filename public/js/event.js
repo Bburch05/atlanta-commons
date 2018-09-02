@@ -85,7 +85,7 @@ var handleFormSubmit = function(event) {
   var post = {
     title : $postTitle.val(),
     text : $text.val(),
-    postType : "issue",
+    postType : "event",
     image : userImage,
     address : $address.val(),
     neighborhood : $neighborhood.val(),
