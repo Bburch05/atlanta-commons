@@ -86,13 +86,14 @@ module.exports = function(app) {
       res.json(result);
     });
   });
-  app.get("/api/users", function(req, res) {
-    db.Users.findAll({}).then(function(result) {
-      res.json(result);
-      console.log(result);
-    });
-  });
+  // app.get("/api/users", function(req, res) {
+  //   db.Users.findAll({}).then(function(result) {
+  //     res.json(result);
+  //     console.log(result);
+  //   });
+  // });
 
+  // Create a new example
   app.post("/api/posts", function(req, res) {
     db.Post.create(req.body).then(function(dbExample) {
       res.json(dbExample);
