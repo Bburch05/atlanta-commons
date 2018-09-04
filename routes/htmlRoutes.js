@@ -40,6 +40,50 @@ module.exports = function(app) {
     };
     res.render("contact", hbsObject);
   });
+  var object;
+  var object2;
+  var object3;
+  var object4;
+  app.get("/a/:n?", function(req, res) {
+    db.Users.findAll({}).then(function(result) {
+      object = { person: result };
+    });
+    db.Post.findAll({
+      where: { postType: "issue" },
+      include: [
+        {
+          model: db.Users,
+          attributes: ["username", "profPic", "firstName", "lastName"]
+        }
+      ]
+    }).then(function(result) {
+      object2 = { person2: result };
+    });
+    db.Post.findAll({
+      where: { postType: "event" },
+      include: [
+        {
+          model: db.Users,
+          attributes: ["username", "profPic", "firstName", "lastName"]
+        }
+      ]
+    }).then(function(result) {
+      object3 = { person3: result };
+    });
+    db.Post.findAll({
+      where: { neighborhood: req.params.n }
+    }).then(function(result) {
+      object4 = { person4: result };
+    });
+    var headob = {
+      user: object,
+      issue: object2,
+      event: object3,
+      neigh: object4
+    };
+
+    res.render("a", headob);
+  });
 
   app.get("/Log", function(req, res) {
     var hbsObject = {
