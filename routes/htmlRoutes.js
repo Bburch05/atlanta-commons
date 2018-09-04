@@ -1,8 +1,8 @@
 var db = require("../models");
 
-module.exports = function (app) {
+module.exports = function(app) {
   // Load index page
-  app.get("/", function (req, res) {
+  app.get("/", function(req, res) {
     db.Post.findAll({
       limit: 10,
       order: [["id", "DESC"]],
@@ -13,12 +13,12 @@ module.exports = function (app) {
           attributes: ["username", "profPic", "firstName", "lastName"]
         }
       ]
-    }).then(function (result) {
+    }).then(function(result) {
       res.render("index", { Post: result });
     });
   });
 
-  app.get("/events", function (req, res) {
+  app.get("/events", function(req, res) {
     db.Post.findAll({
       limit: 10,
       order: [["id", "DESC"]],
@@ -29,26 +29,40 @@ module.exports = function (app) {
           attributes: ["username", "profPic", "firstName", "lastName"]
         }
       ]
-    }).then(function (result) {
+    }).then(function(result) {
       res.render("events", { Post: result });
     });
   });
 
-  app.get("/contact", function (req, res) {
+  app.get("/contact", function(req, res) {
     var hbsObject = {
       cats: "con"
     };
     res.render("contact", hbsObject);
   });
-  app.get("/a", function (req, res) {
-    db.Users.findAll({}).then(function (result) {
-      var user = { user: result };
-      res.render("a", user);
-
+  app.get("/a", function(req, res) {
+    db.Post.findAll({
+      limit: 10,
+      order: [["id", "DESC"]],
+      include: [
+        {
+          model: db.Users,
+          attributes: [
+            "username",
+            "profPic",
+            "firstName",
+            "lastName",
+            "neighborhood",
+            "id"
+          ]
+        }
+      ]
+    }).then(function(result) {
+      res.render("a", { Post: result });
     });
   });
 
-  app.get("/Log", function (req, res) {
+  app.get("/Log", function(req, res) {
     var hbsObject = {
       cats: "log"
     };
@@ -56,7 +70,7 @@ module.exports = function (app) {
   });
 
   // Render 404 page for any unmatched routes
-  app.get("*", function (req, res) {
+  app.get("*", function(req, res) {
     res.render("404");
   });
 };

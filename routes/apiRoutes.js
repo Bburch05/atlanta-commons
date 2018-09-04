@@ -86,12 +86,30 @@ module.exports = function(app) {
       res.json(result);
     });
   });
-  // app.get("/api/users", function(req, res) {
-  //   db.Users.findAll({}).then(function(result) {
-  //     res.json(result);
-  //     console.log(result);
-  //   });
-  // });
+
+  app.get("/api/users", function(req, res) {
+    db.Users.findAll({}).then(function(result) {
+      res.json(result);
+      console.log(result);
+    });
+  });
+
+app.get("/api/allEvents",function(req,res){
+  db.Post.findAll({
+    limit: 10,
+    order: [["id", "DESC"]],
+    where: { postType: "event" },
+    include: [
+      {
+        model: db.Users,
+        attributes: ["username", "profPic", "firstName", "lastName"]
+      }
+    ]
+  }).then(function(result) {
+    res.json(result);
+    console.log(result);
+  });
+});
 
   // Create a new example
   app.post("/api/posts", function(req, res) {
@@ -138,4 +156,25 @@ module.exports = function(app) {
       res.json(result);
     });
   });
+
+  app.get("/api/posts/:neigh", function(req, res) {
+    db.Post.findAll({
+      where: {
+        id: req.params.neigh
+      }
+     }).then(function(result) {
+      res.json(result);
+      console.log(result);
+    });
+  });
+
+  // app.get("/postevents", function (req, res) {
+  //   db.Post.findOne({
+  //     where: { postType: "event" }
+
+  //   }).then(function (result) {
+  //     res.json(result);
+  //     console.log("----------------------"+result);
+  //   });
+  // });
 };
