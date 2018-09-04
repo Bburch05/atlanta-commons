@@ -5,10 +5,12 @@ var imgThumbnail = $("#userPic");
 //Need to match up with the picture upload input
 var imgUpload = $("#profile-pic");
 
-$("#btn-signup").on("click", function(event) {
+$(document).on("click", "#btn-signup", function(event) {
+  console.log("HI");
   event.preventDefault();
   var userPic = imgUpload.src();
   var formData = new FormData();
+  console.log(userPic);
   formData.append("file", userPic);
   formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
 
@@ -50,3 +52,6 @@ $(document).on("click", "#btn-login", function(e) {
     }
   });
 });
+
+//export the user info we get back so we can populate posts etc
+//module.exports = data;
