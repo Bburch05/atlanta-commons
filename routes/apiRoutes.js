@@ -87,29 +87,22 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/users", function(req, res) {
-    db.Users.findAll({}).then(function(result) {
+  app.get("/api/allEvents", function(req, res) {
+    db.Post.findAll({
+      limit: 10,
+      order: [["id", "DESC"]],
+      where: { postType: "event" },
+      include: [
+        {
+          model: db.Users,
+          attributes: ["username", "profPic", "firstName", "lastName"]
+        }
+      ]
+    }).then(function(result) {
       res.json(result);
       console.log(result);
     });
   });
-
-app.get("/api/allEvents",function(req,res){
-  db.Post.findAll({
-    limit: 10,
-    order: [["id", "DESC"]],
-    where: { postType: "event" },
-    include: [
-      {
-        model: db.Users,
-        attributes: ["username", "profPic", "firstName", "lastName"]
-      }
-    ]
-  }).then(function(result) {
-    res.json(result);
-    console.log(result);
-  });
-});
 
   // Create a new example
   app.post("/api/posts", function(req, res) {
@@ -150,6 +143,7 @@ app.get("/api/allEvents",function(req,res){
   });
 
   app.delete("/api/users/:id", function(req, res) {
+    console.log("user delete");
     db.Users.destroy({
       where: { id: req.params.id }
     }).then(function(result) {
@@ -160,9 +154,9 @@ app.get("/api/allEvents",function(req,res){
   app.get("/api/posts/:neigh", function(req, res) {
     db.Post.findAll({
       where: {
-        id: req.params.neigh
+        neighborhood: req.params.neigh
       }
-     }).then(function(result) {
+    }).then(function(result) {
       res.json(result);
       console.log(result);
     });

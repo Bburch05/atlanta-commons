@@ -40,26 +40,49 @@ module.exports = function(app) {
     };
     res.render("contact", hbsObject);
   });
-  app.get("/a", function(req, res) {
+  var object;
+  var object2;
+  var object3;
+  var object4;
+  app.get("/a/:n?", function(req, res) {
+    db.Users.findAll({}).then(function(result) {
+      object = { person: result };
+    });
     db.Post.findAll({
-      limit: 10,
-      order: [["id", "DESC"]],
+      where: { postType: "issue" },
       include: [
         {
           model: db.Users,
-          attributes: [
-            "username",
-            "profPic",
-            "firstName",
-            "lastName",
-            "neighborhood",
-            "id"
-          ]
+          attributes: ["username", "profPic", "firstName", "lastName"]
         }
       ]
     }).then(function(result) {
-      res.render("a", { Post: result });
+      object2 = { person2: result };
     });
+    db.Post.findAll({
+      where: { postType: "event" },
+      include: [
+        {
+          model: db.Users,
+          attributes: ["username", "profPic", "firstName", "lastName"]
+        }
+      ]
+    }).then(function(result) {
+      object3 = { person3: result };
+    });
+    db.Post.findAll({
+      where: { neighborhood: req.params.n }
+    }).then(function(result) {
+      object4 = { person4: result };
+    });
+    var headob = {
+      user: object,
+      issue: object2,
+      event: object3,
+      neigh: object4
+    };
+
+    res.render("a", headob);
   });
 
   app.get("/Log", function(req, res) {

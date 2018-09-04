@@ -44,61 +44,80 @@
     
 
 <div>
-{{#each Post}}
-    <p>User Id: {{User.id}}</p>
-    <p>First Name: {{User.firstName}}</p>
-    <p>Last Name: {{User.lastName}}</p>
-    <p>Neighborhood: {{User.neighborhood}}</p>
+{{#each user.person}}
+    {{!-- <p>User Id: {{this.id}}</p>
+    <p>First Name: {{this.firstName}}</p>
+    <p>Last Name: {{this.lastName}}</p>
+    <p>Neighborhood: {{this.neighborhood}}</p> --}}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Neighborhood</th>
 
-    <button class="remOVe" data-id="{{User.id}}">Remove</button>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{this.id}}</td>
+      <td>{{this.firstName}}</td>
+      <td>{{this.lastName}}</td>
+      <td>{{this.neighborhood}}</td>
+      <td>    <button class="btn btn-primary remOVeUser" data-id="{{this.id}}">Remove</button></td>
+    </tr>
+    
+  </tbody>
+</table>
 {{/each}}
 </div>
 
 </div>
 <div id="addiv2" class="container-fluid">
-  {{#each Post}}
+  {{#each issue.person2}}
    <br>
     <div class="row" id="border1">
       <div class="col-sm-2 col-md-2 text-center">
-            <img class="img-responsive imgnew" src={{image}} alt="eventPic">
+            <img class="img-responsive imgnew" src={{this.image}} alt="eventPic">
       </div>
 
       <div class="col-sm-10">
         <div class="row header1">
           <div class="col-md-6">
             <h3 class="padding1 header1">
-            <p>Tittle :{{title}}</p>
-            <p>Posted by: {{User.username}}</p>
-            <small class="header1">{{createdAt}}</small>
+            <p>Tittle :{{this.title}}</p>
+            <p>Posted by: {{this.User.username}}</p>
+            <small class="header1">{{this.createdAt}}</small>
           </h3>
           </div>
           <div class="col-md-5">
             <h3 class="padding1 header1">
             <p>Neighborhood</p>
-            <small class="header1">{{neighborhood}}</small>
+            <small class="header1">{{this.neighborhood}}</small>
           </h3>
           </div>
           <div class="col-md-1">
-                  <button class="remOVeEvent" data-id="{{this.id}}">Remove</button>
+                  <button class="btn btn-primary remOVeIssue" data-id="{{this.id}}">solved</button>
 
           </div>
           
         </div>
         <div class="row">
-          <p>{{text}}</p>
+          <p>{{this.text}}</p>
           <br>
 
         </div>
 
         <div class="row">
           <div class="col-sm-4">
-            <img class="img-responsive imgnew" src={{image}} alt="eventPic">
+            <img class="img-responsive imgnew" src={{this.image}} alt="eventPic">
 
           </div>
           <div class="col-sm-2"></div>
           <div class="col-sm-6">
             <h3>Location : </h3>
-            <p>{{address}}</p>
+            <p>{{this.address}}</p>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3316.411492405979!2d-84.3914761847922!3d33.775870480681995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f5046684d8f1f1%3A0x71b6d8f11e4667d4!2s770+Spring+St+NW%2C+Atlanta%2C+GA+30308!5e0!3m2!1sen!2sus!4v1535673844371" width="400" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
           </div>
           
@@ -113,49 +132,48 @@
 
 </div>
 <div id="addiv3" class="container-fluid">
-     {{#each Post}}
+     {{#each event.person3}}
    <br>
     <div class="row" id="border1">
       <div class="col-sm-2 col-md-2 text-center">
-            <img class="img-responsive imgnew" src={{image}} alt="eventPic">
+            <img class="img-responsive imgnew" src={{this.image}} alt="eventPic">
       </div>
 
       <div class="col-sm-10">
         <div class="row header1">
           <div class="col-md-6">
             <h3 class="padding1 header1">
-            <p>Tittle :{{title}}</p>
-            <p>Posted by: {{User.username}}</p>
-            <small class="header1">{{createdAt}}</small>
+            <p>Tittle :{{this.title}}</p>
+            <p>Posted by: {{this.User.username}}</p>
+            <small class="header1">{{this.createdAt}}</small>
           </h3>
           </div>
           <div class="col-md-5">
             <h3 class="padding1 header1">
             <p>Neighborhood</p>
-            <small class="header1">{{neighborhood}}</small>
+            <small class="header1">{{this.neighborhood}}</small>
           </h3>
           </div>
           <div class="col-md-1">
-                  <button class="remOVeEvent" data-id="{{this.id}}">Remove</button>
-
+                  <button class=" btn btn-primary remOVeEvent" data-id="{{this.id}}">solved</button>
           </div>
           
         </div>
         <div class="row">
-          <p>{{text}}</p>
+          <p>{{this.text}}</p>
           <br>
 
         </div>
 
         <div class="row">
           <div class="col-sm-4">
-            <img class="img-responsive imgnew" src={{image}} alt="eventPic">
+            <img class="img-responsive imgnew" src={{this.image}} alt="eventPic">
 
           </div>
           <div class="col-sm-2"></div>
           <div class="col-sm-6">
             <h3>Location : </h3>
-            <p>{{address}}</p>
+            <p>{{this.address}}</p>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3316.411492405979!2d-84.3914761847922!3d33.775870480681995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f5046684d8f1f1%3A0x71b6d8f11e4667d4!2s770+Spring+St+NW%2C+Atlanta%2C+GA+30308!5e0!3m2!1sen!2sus!4v1535673844371" width="400" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
           </div>
           
@@ -285,6 +303,60 @@
 
     </select>
     <button id="search" class="btn-btn primary">Search</button>
+<div id="addiv3" class="container-fluid">
+
+ {{#each neigh.person4}}
+   <br>
+    <div class="row" id="border1">
+      <div class="col-sm-2 col-md-2 text-center">
+            <img class="img-responsive imgnew" src={{this.image}} alt="eventPic">
+      </div>
+
+      <div class="col-sm-10">
+        <div class="row header1">
+          <div class="col-md-6">
+            <h3 class="padding1 header1">
+            <p>Tittle :{{this.title}}</p>
+            <p>Posted by: {{this.username}}</p>
+            <small class="header1">{{this.createdAt}}</small>
+          </h3>
+          </div>
+          <div class="col-md-5">
+            <h3 class="padding1 header1">
+            <p>Neighborhood</p>
+            <small class="header1">{{this.neighborhood}}</small>
+          </h3>
+          </div>
+          <div class="col-md-1">
+
+          </div>
+          
+        </div>
+        <div class="row">
+          <p>{{this.text}}</p>
+          <br>
+
+        </div>
+
+        <div class="row">
+          <div class="col-sm-4">
+            <img class="img-responsive imgnew" src={{this.image}} alt="eventPic">
+
+          </div>
+          <div class="col-sm-2"></div>
+          <div class="col-sm-6">
+            <h3>Location : </h3>
+            <p>{{this.address}}</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3316.411492405979!2d-84.3914761847922!3d33.775870480681995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f5046684d8f1f1%3A0x71b6d8f11e4667d4!2s770+Spring+St+NW%2C+Atlanta%2C+GA+30308!5e0!3m2!1sen!2sus!4v1535673844371" width="400" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+          </div>
+          
+          
 
 
+        </div>
+      </div>
+
+    </div>
+    {{/each}}
+   </div>
 </div>

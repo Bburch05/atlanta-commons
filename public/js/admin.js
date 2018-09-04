@@ -8,15 +8,14 @@ $(".maindiv1").on("click", function(e) {
   $("#addiv3").hide();
   $("#addiv4").hide();
   $("#addiv1").show();
-  
 
-  $.get("/api/users", function(data) {
-   console.log(data);
+  $.ajax("/a", {
+    type: "GET"
+  }).then(function() {
+    // Reload the page to get the updated list
+    location.reload();
   });
-
-  
 });
-
 $(".maindiv2").on("click", function(e) {
   e.preventDefault();
   $("#addiv1").hide();
@@ -51,10 +50,22 @@ $(".maindiv4").on("click", function(e) {
   $("#addiv4").show();
 });
 
-
-
-$(".remOVeissue").on("click", function(event) {
+$(".remOVeUser").on("click", function(event) {
   var id = $(this).data("id");
+
+  // Send the DELETE request.
+  $.ajax("/api/users/" + id, {
+    type: "DELETE"
+  }).then(function() {
+    console.log("Row Deleted");
+    // Reload the page to get the updated list
+    location.reload();
+  });
+});
+
+$(".remOVeIssue").on("click", function(event) {
+  var id = $(this).data("id");
+  alert(id);
 
   // Send the DELETE request.
   $.ajax("/api/posts/" + id, {
@@ -66,21 +77,25 @@ $(".remOVeissue").on("click", function(event) {
   });
 });
 
-  
-
-  $("#search").on("click", function(event) {
-    var n =  $('#nei :selected').text();
-    alert(n);
-
+$(".remOVeEvent").on("click", function(event) {
+  var id = $(this).data("id");
+  alert(id);
   // Send the DELETE request.
-  $.ajax("/api/posts/" + n, {
+  $.ajax("/api/posts/" + id, {
+    type: "DELETE"
+  }).then(function() {
+    console.log("Row Deleted");
+    // Reload the page to get the updated list
+    location.reload();
+  });
+});
+
+$("#search").on("click", function(event) {
+  var n = $("#nei :selected").text();
+  $.ajax("/a/" + n, {
     type: "GET"
   }).then(function() {
     // Reload the page to get the updated list
-   
     location.reload();
-   
-   
-    
   });
 });
