@@ -49,6 +49,7 @@ $(document).on("click", "#btn-login", function(e) {
       console.log("We looked but couldnt find anything");
     } else {
       console.log(data);
+      document.cookie = "userId=" + data.id
     }
   });
 });

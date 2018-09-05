@@ -87,6 +87,14 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/users/:username", function(req, res) {
+    db.Users.findOne({
+      where: { username: req.params.username }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
   app.get("/api/allEvents", function(req, res) {
     db.Post.findAll({
       limit: 10,

@@ -4,6 +4,7 @@ var $text = $("#detail-text");
 var $address = $("#address");
 var $neighborhood = $("#neighborhood");
 var $submitBtn = $("#newPost");
+var loginID = document.cookie;
 
 // The API object contains methods for each kind of request we'll make
 var API = {
