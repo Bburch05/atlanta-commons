@@ -56,7 +56,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/posts/:id", function(req, res) {
+  app.get("/api4/postsCmt/:id", function(req, res) {
     db.Post.findOne({
       where: {
         id: req.params.id
@@ -126,9 +126,9 @@ module.exports = function(app) {
 
   app.post("/api/comments/:PostId", function(req, res) {
     db.Comments.create({
-      PostId: req.params.PostId,
       text: req.body.text,
-      UserId: req.body.UserId
+      UserId: req.body.UserId,
+      PostId: req.params.PostId
     }).then(function(result) {
       res.json(result);
     });

@@ -24,7 +24,8 @@ module.exports = function(sequelize, DataTypes) {
     Post.belongsTo(models.Users, {
       foreignKey: {
         allowNull: false
-      }
+      },
+      onDelete: "cascade"
     });
   };
 
@@ -32,7 +33,8 @@ module.exports = function(sequelize, DataTypes) {
     Post.belongsTo(models.Users, {
       foreignKey: {
         allowNull: false
-      }
+      },
+      onDelete: "cascade"
     });
 
     Post.hasMany(models.Comments, {

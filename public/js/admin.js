@@ -1,3 +1,4 @@
+$("#addiv1").hide();
 $("#addiv2").hide();
 $("#addiv3").hide();
 $("#addiv4").hide();
@@ -13,7 +14,6 @@ $(".maindiv1").on("click", function(e) {
     type: "GET"
   }).then(function() {
     // Reload the page to get the updated list
-    location.reload();
   });
 });
 $(".maindiv2").on("click", function(e) {
@@ -51,6 +51,7 @@ $(".maindiv4").on("click", function(e) {
 });
 
 $(".remOVeUser").on("click", function(event) {
+  event.preventDefault();
   var id = $(this).data("id");
 
   // Send the DELETE request.
@@ -64,8 +65,8 @@ $(".remOVeUser").on("click", function(event) {
 });
 
 $(".remOVeIssue").on("click", function(event) {
+  event.preventDefault();
   var id = $(this).data("id");
-  alert(id);
 
   // Send the DELETE request.
   $.ajax("/api/posts/" + id, {
@@ -78,8 +79,8 @@ $(".remOVeIssue").on("click", function(event) {
 });
 
 $(".remOVeEvent").on("click", function(event) {
+  event.preventDefault();
   var id = $(this).data("id");
-  alert(id);
   // Send the DELETE request.
   $.ajax("/api/posts/" + id, {
     type: "DELETE"
@@ -91,6 +92,7 @@ $(".remOVeEvent").on("click", function(event) {
 });
 
 $("#search").on("click", function(event) {
+  event.preventDefault();
   var n = $("#nei :selected").text();
   $.ajax("/a/" + n, {
     type: "GET"
