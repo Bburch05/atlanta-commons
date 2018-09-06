@@ -1,68 +1,32 @@
-var CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/atlanta-commons/upload";
-var CLOUDINARY_UPLOAD_PRESET = "qie6uzuq";
 //Need to match up to the div with the User image tag
-var imgThumbnail = $("#userPic");
-//Need to match up with the picture upload input
-var imgUpload = $("#profile-pic");
+var cloudPreset = qie6uzuq;
+var cloudURL = "https://api.cloudinary.com/v1_1/atlanta-commons/upload";
 
-$(document).on("click", "#btn-signup", function(event) {
-  console.log("HI");
+$(document).on("change", "#profile-pic", function(event) {
   event.preventDefault();
-  // var userPic = imgUpload.src();
-  // var formData = new FormData();
-  // console.log(userPic);
-  // formData.append("file", userPic);
-  // formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+  var imgUpload = event.target.files[0];
+  var formData = new FormData();
+  formData.append("file", imgUpload);
+  formData.append("upload_preset", cloudPreset);
+  console.log(formData);
+  $(document).on("click", "#btn-signup", function(event) {
+    event.preventDefault();
+    axios({
+      url: cloudURL,
+      method: "POST",
+      headers: {
+        baseURL: process.env.cloudURL,
 
-  // axios({
-  //   url: CLOUDINARY_URL,
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/x-www-form-urlencoded"
-  //   },
-  //   data: formData
-  // })
-  //   .then(function(res) {
-  //     console.log(res);
-  //     imgThumbnail.src = res.data.secure_url;
-  //   })
-  //   .catch(function(err) {
-  //     console.log(err);
-  //   });
-  console.log($("#signup-firstName")
-  .val()
-  .trim());
-  console.log($("#signup-lastName")
-  .val()
-  .trim());
-
-
-  var newUser = {
-    username: $("#signup-username")
-      .val()
-      .trim(),
-    password: $("#signup-password")
-      .val()
-      .trim(),
-    firstName: $("#signup-firstName")
-      .val()
-      .trim(),
-    lastName: $("#signup-lastName")
-      .val()
-      .trim(),
-    email: $("#signup-email")
-      .val()
-      .trim(),
-    userPic: "https://i.imgur.com/WLSTfG6.png",
-    neighborhood: $("#signup-neighborhood")
-      .val()
-      .trim()
-  };
-  $.post("/signup", newUser, function(data, status) {
-    console.log(status);
-    if (status === "success"){
-      
-    }
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: formData
+    })
+      .then(function(res) {
+        var userPic = res.data.secure_url;
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
   });
 });
 
@@ -76,14 +40,11 @@ $(document).on("click", "#btn-login", function(e) {
   var userPswd = $("#login-password")
     .val()
     .trim();
-    console.log(userPswd)
-  var user = {
-    username: userName,
-    password: userPswd
-  };
 
   $.post("/signin", user, function(data, status) {
     console.log(status);
     console.log(data);
   });
 });
+
+module.export = userPic;

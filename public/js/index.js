@@ -1,4 +1,5 @@
 // Get references to page elements
+
 var $postTitle = $("#post-title");
 var $text = $("#detail-text");
 var $address = $("#address");
@@ -18,9 +19,25 @@ var API = {
       data: JSON.stringify(post)
     });
   },
+  saveCmt: function(cmt, id) {
+    return $.ajax({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "api/comments/ " + id,
+      data: JSON.stringify(cmt)
+    });
+  },
   getPosts: function() {
     return $.ajax({
       url: "api/posts/",
+      type: "GET"
+    });
+  },
+  getPostCmt: function(id) {
+    return $.ajax({
+      url: "/api4/postsCmt/" + id,
       type: "GET"
     });
   },
@@ -121,4 +138,70 @@ var handleFormSubmit = function(event) {
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
+
+var gbid;
+
+$(".addbtn").on("click", function(event) {
+  event.preventDefault();
+  gbid = $(this).data("id");
+});
+
+$(".addNewCmt").on("click", function(event) {
+  event.preventDefault();
+  var userText = $("#cmtText").val();
+  //placeholder for User Id
+  var userId = 2;
+  var id = gbid;
+  var cmt = {
+    text: userText,
+    UserId: userId,
+    PostId: id
+  };
+
+  API.saveCmt(cmt, id).then(function() {
+    location.reload();
+  });
+
+  $("#cmtText").val("");
+});
 // $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+$(".ViewCmt").on("click", function(event) {
+  event.preventDefault();
+  var id = $(this).data("id");
+  API.getPostCmt(id).then(function(data) {
+    console.log(data);
+    var res = data.Comments;
+    for (var i = 0; i < res.length; i++) {
+      var div = $("<div>");
+      var h4 = $("<h4>");
+      var img = $("<img>");
+      var p = $("<p>");
+      img.attr("src", "/imges/a2.png");
+      // img.attr('height',"70px");
+      // img.attr('width',"70px");
+      img.addClass("imgcmt");
+      img.appendTo(div);
+
+      // h5.text("Title: "+data.title);
+      // h5.addClass("h5cmt")
+      // h5.appendTo(div);
+      p.text("Text: " + data.Comments[i].text);
+      p.addClass("pcmt");
+      p.appendTo(div);
+
+      h4.text(
+        "Comment By: " +
+          data.Comments[i].User.firstName +
+          " " +
+          data.Comments[i].User.lastName +
+          "\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +
+          "On: " +
+          data.Comments[i].createdAt
+      );
+      h4.addClass("h4cmt");
+      h4.appendTo(div);
+      $(".bodycmt").prepend(div);
+    }
+  });
+});

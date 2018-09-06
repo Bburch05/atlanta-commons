@@ -1,6 +1,36 @@
 var db = require("../models");
+const nodemailer = require("nodemailer");
 
 module.exports = function(app, passport) {
+  //Gmail post
+  app.post("/contact", function(req, res) {
+    let transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "acommons1234@gmail.com",
+        pass: "atlantacommons"
+      },
+      tls: {
+        rejectUnauthorized: false
+      }
+    });
+
+    let mailOptions = {
+      from: req.body.email,
+      to: "acommons1234@gmail.com",
+      subject: req.body.name,
+      html: "<b>" + req.body.comments + "</b>"
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        return console.log(error);
+      }
+      console.log("Email Sent: " + info.response);
+    });
+
+    res.render("contact");
+  });
   // Get all Posts
   app.get("/api/posts/:offset?/", function(req, res) {
     var queryOffset;
@@ -56,7 +86,7 @@ module.exports = function(app, passport) {
     });
   });
 
-  app.get("/api/posts/:id", function(req, res) {
+  app.get("/api4/postsCmt/:id", function(req, res) {
     db.Post.findOne({
       where: {
         id: req.params.id
@@ -192,7 +222,7 @@ module.exports = function(app, passport) {
     });
   });
 
-  // app.get("/postevents", function (req, res) {
+  // app.get("/postevents", function(req, res) {
   //   db.Post.findOne({
   //     where: { postType: "event" }
 

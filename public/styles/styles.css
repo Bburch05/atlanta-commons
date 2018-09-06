@@ -86,7 +86,29 @@ width: 50px;
 .imgnew{
   width: 200px;
 }
-
+.pcmt{
+  float: left;
+  color: #806a63;
+  width: 80%;
+  
+}
+.h5cmt{
+  float: left;
+  color: #818181;
+  width: 80%;
+  clear: left;
+} 
+.h4cmt{
+  float: left;
+  color: #303030;
+  width: 100%;
+  clear: left;
+} 
+.imgcmt{
+  float: left;
+  width: 20%;
+  height: 20%;
+}
 .profilepic{
   
   background: #f4511e;
