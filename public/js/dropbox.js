@@ -8,27 +8,55 @@ var imgUpload = $("#profile-pic");
 $(document).on("click", "#btn-signup", function(event) {
   console.log("HI");
   event.preventDefault();
-  var userPic = imgUpload.src();
-  var formData = new FormData();
-  console.log(userPic);
-  formData.append("file", userPic);
-  formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+  // var userPic = imgUpload.src();
+  // var formData = new FormData();
+  // console.log(userPic);
+  // formData.append("file", userPic);
+  // formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
 
-  axios({
-    url: CLOUDINARY_URL,
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    data: formData
-  })
-    .then(function(res) {
-      console.log(res);
-      imgThumbnail.src = res.data.secure_url;
-    })
-    .catch(function(err) {
-      console.log(err);
-    });
+  // axios({
+  //   url: CLOUDINARY_URL,
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/x-www-form-urlencoded"
+  //   },
+  //   data: formData
+  // })
+  //   .then(function(res) {
+  //     console.log(res);
+  //     imgThumbnail.src = res.data.secure_url;
+  //   })
+  //   .catch(function(err) {
+  //     console.log(err);
+  //   });
+
+  var newUser = {
+    username: $("#signup-username")
+      .val()
+      .trim(),
+    password: $("#signup-password")
+      .val()
+      .trim(),
+    firstName: $("#signup-firstName")
+      .val()
+      .trim(),
+    lastName: $("#signup-lastName")
+      .val()
+      .trim(),
+    email: $("#signup-email")
+      .val()
+      .trim(),
+    userPic: "https://i.imgur.com/WLSTfG6.png",
+    neighborhood: $("#signup-neighborhood")
+      .val()
+      .trim()
+  };
+  $.post("/signup", newUser, function(data, status) {
+    console.log(status);
+    if (status === "success"){
+      location.redirect("/")
+    }
+  });
 });
 
 $(document).on("click", "#btn-login", function(e) {
@@ -39,18 +67,13 @@ $(document).on("click", "#btn-login", function(e) {
   var userPswd = $("#login-password")
     .val()
     .trim();
-  //   var User = {
-  //     name: userName,
-  //     password: userPswd
-  //   };
+  var user = {
+    username: userName,
+    password: userPswd
+  };
 
-  $.get("/api/users/" + userName, function(data) {
-    if (!data) {
-      console.log("We looked but couldnt find anything");
-    } else {
-      console.log(data);
-      document.cookie = "userId=" + data.id
-    }
+  $.post("/signin", user, function(data, status) {
+    console.log(status);
   });
 });
 
