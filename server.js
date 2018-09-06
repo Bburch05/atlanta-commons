@@ -2,6 +2,7 @@ require("dotenv").config();
 var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
+const nodemailer = require("nodemailer");
 // var gmail = require("gmail-send");
 // console.log(gmail);
 
@@ -14,6 +15,36 @@ var PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
+
+//Gmail post
+app.post("/contact", function(req, res) {
+  let transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "acommons1234@gmail.com",
+      pass: "atlantacommons"
+    },
+    tls: {
+      rejectUnauthorized: false
+    }
+  });
+
+  let mailOptions = {
+    from: req.body.email,
+    to: "acommons1234@gmail.com",
+    subject: req.body.name,
+    html: "<b>" + req.body.comments + "</b>"
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return console.log(error);
+    }
+    console.log("Email Sent: " + info.response);
+  });
+
+  res.render("contact");
+});
 
 // Handlebars
 app.engine(

@@ -1,34 +1,33 @@
-var CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/atlanta-commons/upload";
-var CLOUDINARY_UPLOAD_PRESET = "qie6uzuq";
 //Need to match up to the div with the User image tag
-var imgThumbnail = $("#userPic");
-//Need to match up with the picture upload input
-var imgUpload = $("#profile-pic");
+var cloudPreset = qie6uzuq;
+var cloudURL = "https://api.cloudinary.com/v1_1/atlanta-commons/upload";
 
-$(document).on("click", "#btn-signup", function(event) {
-  console.log("HI");
+$(document).on("change", "#profile-pic", function(event) {
   event.preventDefault();
-  var userPic = imgUpload.src();
+  var imgUpload = event.target.files[0];
   var formData = new FormData();
-  console.log(userPic);
-  formData.append("file", userPic);
-  formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+  formData.append("file", imgUpload);
+  formData.append("upload_preset", cloudPreset);
+  console.log(formData);
+  $(document).on("click", "#btn-signup", function(event) {
+    event.preventDefault();
+    axios({
+      url: cloudURL,
+      method: "POST",
+      headers: {
+        baseURL: process.env.cloudURL,
 
-  axios({
-    url: CLOUDINARY_URL,
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    data: formData
-  })
-    .then(function(res) {
-      console.log(res);
-      imgThumbnail.src = res.data.secure_url;
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: formData
     })
-    .catch(function(err) {
-      console.log(err);
-    });
+      .then(function(res) {
+        var userPic = res.data.secure_url;
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+  });
 });
 
 $(document).on("click", "#btn-login", function(e) {
@@ -39,10 +38,6 @@ $(document).on("click", "#btn-login", function(e) {
   var userPswd = $("#login-password")
     .val()
     .trim();
-  //   var User = {
-  //     name: userName,
-  //     password: userPswd
-  //   };
 
   $.get("/api/users/" + userName, function(data) {
     if (!data) {
@@ -53,5 +48,4 @@ $(document).on("click", "#btn-login", function(e) {
   });
 });
 
-//export the user info we get back so we can populate posts etc
-//module.exports = data;
+module.export = userPic;
