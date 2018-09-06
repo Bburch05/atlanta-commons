@@ -206,3 +206,15 @@ $(".ViewCmt").on("click", function(event) {
     }
   });
 });
+
+$(".speechbtn").on("click", function(event) {
+  event.preventDefault();
+  console.log("hi");
+
+  if ("speechSynthesis" in window) {
+    var NewText = $(this).data("text");
+    console.log(NewText);
+    var msg = new SpeechSynthesisUtterance(NewText);
+    window.speechSynthesis.speak(msg);
+  }
+});
