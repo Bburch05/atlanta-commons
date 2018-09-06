@@ -1,237 +1,315 @@
-
-
 <!-- Container (Events Section) -->
 <div id="Events" class="container-fluid text-center">
   <h1>Community Events</h1>
   <h4></h4>
   <br>
   <div class="container">
-  <div class="row">
-    <div class="col-sm-3">
+    <div class="row">
+      <div class="col-sm-3">
 
-    </div>
-    <div class="col-sm-6">
-      <button type="button" class="btn btn-primary eventbtn" data-toggle="modal" data-target="#exampleModal"><h4 style="color:white;">Create A Event</h4></button>
+      </div>
+      <div class="col-sm-6">
+        <button type="button" class="btn btn-primary eventbtn" data-toggle="modal" data-target="#exampleModal">
+          <h4 style="color:white;">Create A Event</h4>
+        </button>
 
-    </div>
-    <div class="col-sm-3">
-      
+      </div>
+      <div class="col-sm-3">
+
+      </div>
     </div>
   </div>
-</div>
-{{!-- Begin Modal --}}
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <br><br>
-        <h5 class="modal-title2" id="exampleModalLabel2">Post an a Event : </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="recipient-name2" class="col-form-label">Title:</label>
-            <input type="text" class="form-control" id="post-title" placeholder="Event Title">
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Detail:</label>
-            <textarea class="form-control" id="detail-text" placeholder="Detail"></textarea>
-          </div>
-           <div class="form-group">
+  {{!-- Begin Modal --}}
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <br>
+          <br>
+          <h5 class="modal-title2" id="exampleModalLabel2">Post an a Event : </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name2" class="col-form-label">Title:</label>
+              <input type="text" class="form-control" id="post-title" placeholder="Event Title">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Detail:</label>
+              <textarea class="form-control" id="detail-text" placeholder="Detail"></textarea>
+            </div>
+            <div class="form-group">
               <label for="image" class="col-form-label">Upload Image:</label>
               <br>
               <input type="file" class="form-control" name="myImage" accept="image/*" />
             </div>
-          <div class="form-group">
-            <label for="address" class="col-form-label">Event Location:</label>
-            <input type="text" class="form-control" id="address"  placeholder="Issue Location: Example - 770 spring st nw, atlanta, ga 30308">
-          </div>
-           <div class="form-group">
-                                    <label for="neighborhood" class="col-md-3 control-label">Neighborhood</label>
-                                    <div class="col-md-9">
-                                    <select name="neighborhood" id="neighborhood">
-                                    
-                                    <option value="Acworth">Acworth</option>
-                                    <option value="Adairsville">Adairsville</option>
-                                    <option value="Alpharetta">Alpharetta</option>
-                                    <option value="SE Atlanta">SE Atlanta</option>
-                                    <option value="NW Atlanta">NW Atlanta</option>
-                                    <option value="East Atlanta">East Atlanta</option>
-                                    <option value="South Atlanta">South Atlanta</option>
-                                    <option value="Austell">Austell</option>
-                                    <option value="Avondale Estates">Avondale Estates</option>
-                                    <option value="Ball Ground">Ball Ground</option>
-                                    <option value="Berkeley Lake">Berkeley Lake</option>
-                                    <option value="Braselton">Braselton</option>
-                                    <option value="Brookhaven">Brookhaven</option>
-                                    <option value="Brooks">Brooks</option>
-                                    <option value="Buckhead">Buckhead</option>
-                                    <option value="Buford">Buford</option>
-                                    <option value="Canton">Canton</option>
-                                    <option value="Carrollton">Carrollton</option>
-                                    
-                                    <option value="Cartersville">Cartersville</option>
-                                    <option value="Chamblee">Chamblee</option>
-                                    <option value="Clarkston">Clarkston</option>
-                                    <option value="Clermont">Clermont</option>
-                                    <option value="College Parki">College Park</option>
-                                    <option value="Conyers">Conyers</option>
-                                    <option value="Covington">Covington</option>
-                                    <option value="Cumming">Cumming</option>
-                                    <option value="Dacula">Dacula</option>
-                                    
-                                    <option value="Dallas">Dallas</option>
-                                    <option value="Decatur/Emory">Decatur/Emory</option>
-                                    <option value="Doraville">Doraville</option>
-                                    <option value="Douglasville">Douglasville</option>
-                                    <option value="Downtown Atlanta">Downtown Atlanta</option>
-                                    <option value="Duluth">Duluth</option>
-                                    <option value="Dunwoody">Dunwoody</option>
-                                    <option value="East Point">East Point</option>
-                                    
-                                    <option value="Euharlee">Euharlee</option>
-                                    <option value="Fairburn">Fairburn</option>
-                                    <option value="Fayetteville">Fayetteville</option>
-                                    <option value="Flowery Branch">Flowery Branch</option>
-                                    <option value="Forest Park">Forest Park</option>
-                                    <option value="Gainesville">Gainesville</option>
-                                    <option value="Grantville">Grantville</option>
-                                    <option value="Grayson">Grayson</option>
-                                    <option value="Griffin">Griffin</option>
-                                    
-                                    <option value="Hampton">Hampton</option>
-                                    <option value="Hapeville">Hapeville</option>
-                                    <option value="Hiram">Hiram</option>
-                                    <option value="Holly Springs">Holly Springs</option>
-                                    <option value="Johns Creek">Johns Creek</option>
-                                    <option value="Jonesboro">Jonesboro</option>
-                                    <option value="Kennesaw">Kennesaw</option>
-                                    <option value="Kingston">Kingston</option>
-                                    <option value="Lawrenceville">Lawrenceville</option>
-                                    
-                                    <option value="Lilburn">Lilburn</option>
-                                    <option value="Lithia Springs">Lithia Springs</option>
-                                    <option value="Lithonia">Lithonia</option>
-                                    <option value="Locust Grovedi">Locust Grove</option>
-                                    <option value="Loganville">Loganville</option>
-                                    <option value="Lula">Lula</option>
-                                    <option value="Mableton">Mableton</option>
-                                    <option value="Marietta">Marietta</option>
-                                    <option value="McDonough">McDonough</option>
-                                    
-                                    <option value="Midtown Atlanta">Midtown Atlanta</option>
-                                    <option value="Milton">Milton</option>
-                                    <option value="Moreland">Moreland</option>
-                                    <option value="Morrow">Morrow</option>
-                                    <option value="Newnan">Newnan</option>
-                                    <option value="Norcross">Norcross</option>
-                                    <option value="Oakwood">Oakwood</option>
-                                    <option value="Oxford">Oxford</option>
-                                    <option value="Palmetto">Palmetto</option>
-                                    
-                                    <option value="Peachtree City">Peachtree City</option>
-                                    <option value="Peachtree Corners">Peachtree Corners</option>
-                                    <option value="Pine Lake">Pine Lake</option>
-                                    <option value="Porterdale">Porterdale</option>
-                                    <option value="Powder Springs">Powder Springs</option>
-                                    <option value="Rex">Rex</option>
-                                    <option value="Riverdale">Riverdale</option>
-                                    <option value="Rockmart">Rockmart</option>
-                                    <option value="Roswell">Roswell</option>
-                                    
-                                    <option value="Rydal">Rydal</option>
-                                    <option value="Sandy Springs North">Sandy Springs North</option>
-                                    <option value="Sandy Springs South">Sandy Springs South</option>
-                                    <option value="Senoia">Senoia</option>
-                                    <option value="Sharpsburg">Sharpsburg</option>
-                                    <option value="Smyrna">Smyrna</option>
-                                    <option value="Snellville">Snellville</option>
-                                    <option value="Stockbridge">Stockbridge</option>
-                                    <option value="Stone Mountain">Stone Mountain</option>
-                                    <option value="Sugar Hill">Sugar Hill</option>
-                                    <option value="Suwanee">Suwanee</option>
-                                    <option value="Tucker">Tucker</option>
-                                    <option value="Tyrone">Tyrone</option>
-                                    <option value="Union City">Union City</option>
-                                    <option value="Villa Rica">Villa Rica</option>
-                                    <option value="Vinings">Vinings</option>
-                                    <option value="Virginia Highland">Virginia Highland</option>
-                                    <option value="Waleska">Waleska</option>
-                                    <option value="Winston">Winston</option>
-                                    <option value="Woodstock">Woodstock</option>                                
+            <div class="form-group">
+              <label for="address" class="col-form-label">Event Location:</label>
+              <input type="text" class="form-control" id="address" placeholder="Issue Location: Example - 770 spring st nw, atlanta, ga 30308">
+            </div>
+            <div class="form-group">
+              <label for="neighborhood" class="col-md-3 control-label">Neighborhood</label>
+              <div class="col-md-9">
+                <select name="neighborhood" id="neighborhood">
 
-                                    </select>
-                                    </div>
-                                </div>
-                                <br>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="newPost">Create</button>
+                  <option value="Acworth">Acworth</option>
+                  <option value="Adairsville">Adairsville</option>
+                  <option value="Alpharetta">Alpharetta</option>
+                  <option value="SE Atlanta">SE Atlanta</option>
+                  <option value="NW Atlanta">NW Atlanta</option>
+                  <option value="East Atlanta">East Atlanta</option>
+                  <option value="South Atlanta">South Atlanta</option>
+                  <option value="Austell">Austell</option>
+                  <option value="Avondale Estates">Avondale Estates</option>
+                  <option value="Ball Ground">Ball Ground</option>
+                  <option value="Berkeley Lake">Berkeley Lake</option>
+                  <option value="Braselton">Braselton</option>
+                  <option value="Brookhaven">Brookhaven</option>
+                  <option value="Brooks">Brooks</option>
+                  <option value="Buckhead">Buckhead</option>
+                  <option value="Buford">Buford</option>
+                  <option value="Canton">Canton</option>
+                  <option value="Carrollton">Carrollton</option>
+
+                  <option value="Cartersville">Cartersville</option>
+                  <option value="Chamblee">Chamblee</option>
+                  <option value="Clarkston">Clarkston</option>
+                  <option value="Clermont">Clermont</option>
+                  <option value="College Parki">College Park</option>
+                  <option value="Conyers">Conyers</option>
+                  <option value="Covington">Covington</option>
+                  <option value="Cumming">Cumming</option>
+                  <option value="Dacula">Dacula</option>
+
+                  <option value="Dallas">Dallas</option>
+                  <option value="Decatur/Emory">Decatur/Emory</option>
+                  <option value="Doraville">Doraville</option>
+                  <option value="Douglasville">Douglasville</option>
+                  <option value="Downtown Atlanta">Downtown Atlanta</option>
+                  <option value="Duluth">Duluth</option>
+                  <option value="Dunwoody">Dunwoody</option>
+                  <option value="East Point">East Point</option>
+
+                  <option value="Euharlee">Euharlee</option>
+                  <option value="Fairburn">Fairburn</option>
+                  <option value="Fayetteville">Fayetteville</option>
+                  <option value="Flowery Branch">Flowery Branch</option>
+                  <option value="Forest Park">Forest Park</option>
+                  <option value="Gainesville">Gainesville</option>
+                  <option value="Grantville">Grantville</option>
+                  <option value="Grayson">Grayson</option>
+                  <option value="Griffin">Griffin</option>
+
+                  <option value="Hampton">Hampton</option>
+                  <option value="Hapeville">Hapeville</option>
+                  <option value="Hiram">Hiram</option>
+                  <option value="Holly Springs">Holly Springs</option>
+                  <option value="Johns Creek">Johns Creek</option>
+                  <option value="Jonesboro">Jonesboro</option>
+                  <option value="Kennesaw">Kennesaw</option>
+                  <option value="Kingston">Kingston</option>
+                  <option value="Lawrenceville">Lawrenceville</option>
+
+                  <option value="Lilburn">Lilburn</option>
+                  <option value="Lithia Springs">Lithia Springs</option>
+                  <option value="Lithonia">Lithonia</option>
+                  <option value="Locust Grovedi">Locust Grove</option>
+                  <option value="Loganville">Loganville</option>
+                  <option value="Lula">Lula</option>
+                  <option value="Mableton">Mableton</option>
+                  <option value="Marietta">Marietta</option>
+                  <option value="McDonough">McDonough</option>
+
+                  <option value="Midtown Atlanta">Midtown Atlanta</option>
+                  <option value="Milton">Milton</option>
+                  <option value="Moreland">Moreland</option>
+                  <option value="Morrow">Morrow</option>
+                  <option value="Newnan">Newnan</option>
+                  <option value="Norcross">Norcross</option>
+                  <option value="Oakwood">Oakwood</option>
+                  <option value="Oxford">Oxford</option>
+                  <option value="Palmetto">Palmetto</option>
+
+                  <option value="Peachtree City">Peachtree City</option>
+                  <option value="Peachtree Corners">Peachtree Corners</option>
+                  <option value="Pine Lake">Pine Lake</option>
+                  <option value="Porterdale">Porterdale</option>
+                  <option value="Powder Springs">Powder Springs</option>
+                  <option value="Rex">Rex</option>
+                  <option value="Riverdale">Riverdale</option>
+                  <option value="Rockmart">Rockmart</option>
+                  <option value="Roswell">Roswell</option>
+
+                  <option value="Rydal">Rydal</option>
+                  <option value="Sandy Springs North">Sandy Springs North</option>
+                  <option value="Sandy Springs South">Sandy Springs South</option>
+                  <option value="Senoia">Senoia</option>
+                  <option value="Sharpsburg">Sharpsburg</option>
+                  <option value="Smyrna">Smyrna</option>
+                  <option value="Snellville">Snellville</option>
+                  <option value="Stockbridge">Stockbridge</option>
+                  <option value="Stone Mountain">Stone Mountain</option>
+                  <option value="Sugar Hill">Sugar Hill</option>
+                  <option value="Suwanee">Suwanee</option>
+                  <option value="Tucker">Tucker</option>
+                  <option value="Tyrone">Tyrone</option>
+                  <option value="Union City">Union City</option>
+                  <option value="Villa Rica">Villa Rica</option>
+                  <option value="Vinings">Vinings</option>
+                  <option value="Virginia Highland">Virginia Highland</option>
+                  <option value="Waleska">Waleska</option>
+                  <option value="Winston">Winston</option>
+                  <option value="Woodstock">Woodstock</option>
+
+                </select>
+              </div>
+            </div>
+            <br>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="newPost">Create</button>
+        </div>
       </div>
     </div>
   </div>
+  {{!-- End Modal --}}
 </div>
-{{!-- End Modal --}}
-  </div>
 
 
 
-  <div class="container">
+<div class="container">
 
-{{#each Post}}
-    <div class="row" id="border1">
-      <div class="col-sm-2 col-md-2 text-center">
-        <img src={{User.profPic}} class="img-circle imgissue" alt="Avatar">
-      </div>
+  {{#each Post}}
+  <div class="row" id="border1">
+    <div class="col-sm-2 col-md-2 text-center">
+      <img src={{User.profPic}} class="img-circle imgissue" alt="Avatar">
+    </div>
 
-      <div class="col-sm-10">
-        <div class="row header1">
-          <div class="col-md-6">
-            <h3 class="padding1 header1">
+    <div class="col-sm-10">
+      <div class="row header1">
+        <div class="col-md-6">
+          <h3 class="padding1 header1">
             <p>{{title}}</p>
             <p>Posted by: {{User.username}}</p>
             <small class="header1">{{createdAt}}</small>
           </h3>
-          </div>
-          <div class="col-md-6">
-            <h3 class="padding1 header1">
+        </div>
+        <div class="col-md-6">
+          <h3 class="padding1 header1">
             <p>Neighborhood</p>
             <small class="header1">{{neighborhood}}</small>
           </h3>
-          </div>
-          
-        </div>
-        <div class="row">
-          <p>{{text}}</p>
-          <br>
-
         </div>
 
-        <div class="row">
-          <div class="col-sm-4">
-            <img class="img-responsive imgnew" src={{image}} alt="eventPic">
+      </div>
+      <div class="row">
+        <p>{{text}}</p>
+        <br>
 
-          </div>
-          <div class="col-sm-2"></div>
-          <div class="col-sm-6">
-            <h3>Location : </h3>
-            <p>{{address}}</p>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3316.411492405979!2d-84.3914761847922!3d33.775870480681995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f5046684d8f1f1%3A0x71b6d8f11e4667d4!2s770+Spring+St+NW%2C+Atlanta%2C+GA+30308!5e0!3m2!1sen!2sus!4v1535673844371" width="400" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
-          </div>
-          
-          
-
-
-        </div>
       </div>
 
+      <div class="row">
+        <div class="col-sm-4">
+          <img class="img-responsive imgnew" src={{image}} alt="eventPic">
+
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-6">
+          <h3>Location : </h3>
+          <p>{{address}}</p>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3316.411492405979!2d-84.3914761847922!3d33.775870480681995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f5046684d8f1f1%3A0x71b6d8f11e4667d4!2s770+Spring+St+NW%2C+Atlanta%2C+GA+30308!5e0!3m2!1sen!2sus!4v1535673844371"
+            width="400" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            {{!--
+            <button class="btn btn-primary addCmt" data-id="{{this.id}}">Add Comment</button> --}}
+            <button type="button" class="btn btn-primary btn-lg addbtn" data-id="{{this.id}}" data-toggle="modal" data-target="#exampleModal2">
+              Add Comment
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <br>
+                    <br>
+                    <h5 class="modal-title" id="exampleModalLabel">Adding Comment</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="form-group">
+                        <label for="cmt-text" class="col-form-label">Comment:</label>
+                        <input type="text" class="form-control" id="cmtText" placeholder="Enter Your Comment Here ....">
+                        <br>
+                        <br>
+                        <br>
+                        <a href="/" class="btn btn-primary addNewCmt">Add</a>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            {{!--
+            <button class="btn btn-primary viewCmt" data-id="{{this.id}}">View Comments</button> --}}
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-lg ViewCmt" data-id=" {{this.id}}" data-toggle="modal" data-target="#myModal3">
+              View Comments
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <br>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Comments</h4>
+                    <br>
+                  </div>
+                  <div style="border:0" class="modal-body bodycmt" >
+                    <br>
+                  </div>
+                  <div class="modal-footer">
+                    <br>
+                    <br>
+                  </div>
+                  <button type="button" class="btn btn-primary" style="margin:auto;display:block;margin-bottom:2px;" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+
+      </div>
     </div>
-    {{/each}}
+    <br>
+    <br>
+
+  </div>
+  <br>
+  <br> {{/each}}
 
 
   <script src="./js/event.js"></script>
-  </div>
+</div>
