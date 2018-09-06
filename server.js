@@ -18,8 +18,7 @@ app.use(express.static("public"));
 
 //Gmail post
 app.post("/contact", function(req, res) {
-
-  let transporter = nodemailer.createTransport( {
+  let transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
       user: "acommons1234@gmail.com",
@@ -29,16 +28,14 @@ app.post("/contact", function(req, res) {
       rejectUnauthorized: false
     }
   });
-  
+
   let mailOptions = {
-    from: req.body.email, 
+    from: req.body.email,
     to: "acommons1234@gmail.com",
     subject: req.body.name,
-    html: "<b>" +
-      req.body.comments +
-    "</b>"
+    html: "<b>" + req.body.comments + "</b>"
   };
-  
+
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       return console.log(error);
