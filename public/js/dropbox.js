@@ -42,6 +42,7 @@
 //     .val()
 //     .trim();
 
+
 //   $.get("/api/users/" + userName, function(data) {
 //     if (!data) {
 //       console.log("We looked but couldnt find anything");
