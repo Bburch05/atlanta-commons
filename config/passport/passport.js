@@ -82,15 +82,15 @@ module.exports = function(passport, user) {
  
                             password: userPassword,
  
-                            firstname: req.body.firstName,
+                            firstName: req.body.firstName,
  
-                            lastname: req.body.lastName,
+                            lastName: req.body.lastName,
 
-                        //   email: req.body.email,
+                            email: req.body.email,
 
-                          profPic: req.body.userPic,
+                            profPic: req.body.userPic,
 
-                          neighborhood: req.body.neighborhood
+                            neighborhood: req.body.neighborhood
 
 
  
@@ -171,8 +171,15 @@ passport.use("local-signin", new LocalStrategy(
             return done(null, userinfo);
  
  
-    }
-    )
+          }).catch(function(err) {
+ 
+            console.log("Error:", err);
+ 
+            return done(null, false, {
+                message: 'Something went wrong with your Signin'
+            });
+ 
+        });
  
 
 

@@ -118,10 +118,22 @@ module.exports = function(app, passport) {
     console.log(req.user);
     if(req.user){
       console.log("Howdy");
+      db.Post.create({
+        title: req.body.title,
+        text: req.body.text,
+        postType: req.body.postType,
+        image: req.body.image,
+        address: req.body.address,
+        neighborhood: req.body.neighborhood,
+        UserId : req.user.id
+
+      }).then(function(dbExample) {
+        res.json(dbExample);
+      });
     }
-    db.Post.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
-    });
+    else{
+      res.redirect("/Log")
+    }
   });
 
   app.post("/api/users", function(req, res) {

@@ -52,7 +52,7 @@ var handleFormSubmit = function(event) {
   var userImage = "https://i.imgur.com/TpqwWl6.jpg";
   //placeholder for User Id
   var posterId = 2;
-
+  
   var post = {
     title: $postTitle.val(),
     text: $text.val(),

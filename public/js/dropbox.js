@@ -29,6 +29,13 @@ $(document).on("click", "#btn-signup", function(event) {
   //   .catch(function(err) {
   //     console.log(err);
   //   });
+  console.log($("#signup-firstName")
+  .val()
+  .trim());
+  console.log($("#signup-lastName")
+  .val()
+  .trim());
+
 
   var newUser = {
     username: $("#signup-username")
@@ -54,7 +61,7 @@ $(document).on("click", "#btn-signup", function(event) {
   $.post("/signup", newUser, function(data, status) {
     console.log(status);
     if (status === "success"){
-      location.redirect("/")
+      
     }
   });
 });
@@ -64,9 +71,12 @@ $(document).on("click", "#btn-login", function(e) {
   var userName = $("#login-username")
     .val()
     .trim();
+
+    console.log(userName);
   var userPswd = $("#login-password")
     .val()
     .trim();
+    console.log(userPswd)
   var user = {
     username: userName,
     password: userPswd
@@ -74,8 +84,6 @@ $(document).on("click", "#btn-login", function(e) {
 
   $.post("/signin", user, function(data, status) {
     console.log(status);
+    console.log(data);
   });
 });
-
-//export the user info we get back so we can populate posts etc
-//module.exports = data;

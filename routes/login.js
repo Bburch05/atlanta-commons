@@ -14,7 +14,14 @@ module.exports = function(app, passport) {
     "/signin",
     passport.authenticate("local-signin", {
       successRedirect: "/",
-      failureRedirect: "/Log"
+      failureRedirect: "/"
     })
   );
+
+  app.get('/logout', function(req,res){
+    req.session.destroy(function(err) {
+
+      res.redirect('/');
+  });
+  });
 };

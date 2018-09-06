@@ -15,9 +15,9 @@ module.exports = function(sequelize, DataTypes) {
         len: [8]
       }
     },
-    // email: {
-    //   type: DataTypes.STRING
-    // },
+    email: {
+      type: DataTypes.STRING
+    },
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     neighborhood: {
