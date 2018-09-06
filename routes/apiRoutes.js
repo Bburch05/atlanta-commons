@@ -1,7 +1,7 @@
 var db = require("../models");
 const nodemailer = require("nodemailer");
 
-module.exports = function(app) {
+module.exports = function(app, passport) {
   //Gmail post
   app.post("/contact", function(req, res) {
     let transporter = nodemailer.createTransport({
@@ -117,6 +117,14 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/users/:username", function(req, res) {
+    db.Users.findOne({
+      where: { username: req.params.username }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
   app.get("/api/allEvents", function(req, res) {
     db.Post.findAll({
       limit: 10,
@@ -136,9 +144,26 @@ module.exports = function(app) {
 
   // Create a new example
   app.post("/api/posts", function(req, res) {
-    db.Post.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
-    });
+    console.log("Howdy");
+    console.log(req.user);
+    if(req.user){
+      console.log("Howdy");
+      db.Post.create({
+        title: req.body.title,
+        text: req.body.text,
+        postType: req.body.postType,
+        image: req.body.image,
+        address: req.body.address,
+        neighborhood: req.body.neighborhood,
+        UserId : req.user.id
+
+      }).then(function(dbExample) {
+        res.json(dbExample);
+      });
+    }
+    else{
+      res.redirect("/Log")
+    }
   });
 
   app.post("/api/users", function(req, res) {
@@ -146,6 +171,7 @@ module.exports = function(app) {
       username: req.body.username,
       password: req.body.password,
       firstName: req.body.firstName,
+      email: req.body.email,
       lastName: req.body.lastName,
       neighborhood: req.body.neighborhood,
       profPic: req.body.profPic
@@ -155,13 +181,17 @@ module.exports = function(app) {
   });
 
   app.post("/api/comments/:PostId", function(req, res) {
-    db.Comments.create({
-      text: req.body.text,
-      UserId: req.body.UserId,
-      PostId: req.params.PostId
-    }).then(function(result) {
-      res.json(result);
-    });
+    if (req.user) {
+      db.Comments.create({
+        PostId: req.params.PostId,
+        text: req.body.text,
+        UserId: req.user.id
+      }).then(function(result) {
+        res.json(result);
+      });
+    } else {
+      res.redirect("/Log");
+    }
   });
 
   app.delete("/api/posts/:id", function(req, res) {

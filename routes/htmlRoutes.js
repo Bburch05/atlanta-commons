@@ -3,6 +3,9 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
+    if(req.user){
+      console.log(req.user);
+    }
     db.Post.findAll({
       limit: 10,
       order: [["id", "DESC"]],

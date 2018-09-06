@@ -35,16 +35,15 @@ $(document).on("click", "#btn-login", function(e) {
   var userName = $("#login-username")
     .val()
     .trim();
+
+    console.log(userName);
   var userPswd = $("#login-password")
     .val()
     .trim();
 
-  $.get("/api/users/" + userName, function(data) {
-    if (!data) {
-      console.log("We looked but couldnt find anything");
-    } else {
-      console.log(data);
-    }
+  $.post("/signin", user, function(data, status) {
+    console.log(status);
+    console.log(data);
   });
 });
 
