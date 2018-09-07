@@ -129,8 +129,7 @@ module.exports = function(app, passport) {
       }).then(function(dbExample) {
         res.json(dbExample);
       });
-    }
-    else{
+    } else {
       res.redirect("/Log");
     }
   });

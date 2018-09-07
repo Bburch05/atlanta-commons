@@ -28,14 +28,7 @@
                                     
 
                                 
-                            <div class="input-group">
-                                      <div class="checkbox">
-                                        <label>
-                                          <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
-                                        </label>
-                                      </div>
-                                    </div>
-
+                            
 
                                 <div style="margin-top:10px" class="form-group">
                                     <!-- Button -->
@@ -69,7 +62,7 @@
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <div class="panel-title"><h2 style="color:white">Sign Up</h2></div>
-                            <div style="float:right; font-size: 85%; position: relative; top:-10px;"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()"><h4 style="color:wheat;">Sign In</h4></a></div>
+                            <div style="float:right; font-size: 85%; position: relative; top:-20px;"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()"><h4 style="color:wheat;">Sign In</h4></a></div>
                         </div>  
                         <div class="panel-body" >
                             <form id="signupform" class="form-horizontal" role="form" method="post" action="/signup">
@@ -78,20 +71,20 @@
                                 <div class="form-group">
                                     <label for="username" class="col-md-3 control-label us">Username</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="username" id="signup-username" placeholder="Username">
+                                        <input type="text" class="form-control" name="username" id="signup-username" placeholder="Username" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="password" class="col-md-3 control-label">Password</label>
                                     <div class="col-md-9">
-                                        <input type="password" class="form-control" name="password" id="signup-password" placeholder="Password">
+                                        <input type="password" class="form-control" name="password" id="signup-password" placeholder="Password" required>
                                     </div>
                                 </div>
                                   
                                 <div class="form-group">
                                     <label for="email" class="col-md-3 control-label">Email</label>
                                     <div class="col-md-9">
-                                        <input type="email" class="form-control" name="email" id="signup-email" aria-describedby="emailHelp" placeholder="Enter email">
+                                        <input type="email" class="form-control" name="email" id="signup-email" aria-describedby="emailHelp" placeholder="Enter email" required>
                                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 
                                     </div>
@@ -100,20 +93,20 @@
                                 <div class="form-group">
                                     <label for="firstname" class="col-md-3 control-label">First Name</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="firstName" id="signup-firstName" placeholder="First Name">
+                                        <input type="text" class="form-control" name="firstName" id="signup-firstName" placeholder="First Name" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="lastname" class="col-md-3 control-label">Last Name</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="lastName" id="signup-lastName" placeholder="Last Name">
+                                        <input type="text" class="form-control" name="lastName" id="signup-lastName" placeholder="Last Name" required>
                                     </div>
                                 </div>
                                 
                                 <div class="form-group">
                                     <label for="neighborhood" class="col-md-3 control-label">Neighborhood</label>
-                                    <div class="col-md-9">
-                                    <select name="neighborhood" id="signup-neighborhood">
+                                    <div class="col-md-8">
+                                    <select name="neighborhood" id="signup-neighborhood" >
                                     
                                     <option value="Acworth">Acworth</option>
                                     <option value="Adairsville">Adairsville</option>
@@ -254,10 +247,6 @@
                             </form>
                          </div>
                     </div>
-
-               
-               
-                
          </div> 
     </div>
     <script src="./js/login.js"
