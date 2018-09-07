@@ -6,7 +6,8 @@ module.exports = function(app, passport) {
     passport.authenticate("local-signup", {
       successRedirect: "/",
 
-      failureRedirect: "/Log"
+      failureRedirect: "/Log",
+      failureFlash: true
     })
   );
 
@@ -18,10 +19,9 @@ module.exports = function(app, passport) {
     })
   );
 
-  app.get('/logout', function(req,res){
+  app.get("/logout", function(req, res) {
     req.session.destroy(function(err) {
-
-      res.redirect('/');
-  });
+      res.redirect("/");
+    });
   });
 };

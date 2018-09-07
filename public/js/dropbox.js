@@ -43,7 +43,6 @@ var cloudURL = "https://api.cloudinary.com/v1_1/atlanta-commons/upload";
 //     .val()
 //     .trim();
 
-
 //   $.get("/api/users/" + userName, function(data) {
 //     if (!data) {
 //       console.log("We looked but couldnt find anything");
