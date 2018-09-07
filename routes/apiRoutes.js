@@ -116,7 +116,7 @@ module.exports = function(app, passport) {
   app.post("/api/posts", function(req, res) {
     console.log("Howdy");
     console.log(req.user);
-    if(req.user){
+    if (req.user) {
       console.log("Howdy");
       db.Post.create({
         title: req.body.title,
@@ -125,8 +125,7 @@ module.exports = function(app, passport) {
         image: req.body.image,
         address: req.body.address,
         neighborhood: req.body.neighborhood,
-        UserId : req.user.id
-
+        UserId: req.user.id
       }).then(function(dbExample) {
         res.json(dbExample);
       });
