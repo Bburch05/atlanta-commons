@@ -63,6 +63,5 @@ $(document).on("click", "#btn-login", function(e) {
 
   $.post("/signin", user, function(data, status) {
     console.log(status);
-    console.log(data);
   });
 });
