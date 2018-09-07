@@ -8,13 +8,16 @@ var imgUpload = $("#profile-pic");
 $(document).on("click", "#btn-signup", function(event) {
   event.preventDefault();
 
-  console.log($("#signup-firstName")
-  .val()
-  .trim());
-  console.log($("#signup-lastName")
-  .val()
-  .trim());
-
+  console.log(
+    $("#signup-firstName")
+      .val()
+      .trim()
+  );
+  console.log(
+    $("#signup-lastName")
+      .val()
+      .trim()
+  );
 
   var newUser = {
     username: $("#signup-username")
@@ -39,9 +42,6 @@ $(document).on("click", "#btn-signup", function(event) {
   };
   $.post("/signup", newUser, function(data, status) {
     console.log(status);
-    if (status === "success"){
-      
-    }
   });
 });
 
@@ -51,11 +51,11 @@ $(document).on("click", "#btn-login", function(e) {
     .val()
     .trim();
 
-    console.log(userName);
+  console.log(userName);
   var userPswd = $("#login-password")
     .val()
     .trim();
-    console.log(userPswd)
+  console.log(userPswd);
   var user = {
     username: userName,
     password: userPswd

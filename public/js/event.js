@@ -102,7 +102,7 @@ var handleFormSubmit = function(event) {
   var userImage = userPic;
   //placeholder for User Id
   var posterId = 2;
-  
+
   var post = {
     title: $postTitle.val(),
     text: $text.val(),
