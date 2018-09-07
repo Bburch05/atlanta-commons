@@ -98,10 +98,7 @@ var API = {
 var handleFormSubmit = function(event) {
   event.preventDefault();
 
-  //placeholder for file upload
   var userImage = userPic;
-  //placeholder for User Id
-  var posterId = 2;
 
   var post = {
     title: $postTitle.val(),
@@ -110,7 +107,6 @@ var handleFormSubmit = function(event) {
     image: userImage,
     address: $address.val(),
     neighborhood: $neighborhood.val(),
-    UserId: posterId
   };
 
   if (!(post.text && post.title && post.address)) {
