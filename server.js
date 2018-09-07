@@ -4,9 +4,6 @@ var passport = require("passport");
 var session = require("express-session");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
-const nodemailer = require("nodemailer");
-// var gmail = require("gmail-send");
-// console.log(gmail);
 
 var db = require("./models");
 
@@ -17,36 +14,6 @@ var PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
-
-//Gmail post
-app.post("/contact", function(req, res) {
-  let transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: "acommons1234@gmail.com",
-      pass: "atlantacommons"
-    },
-    tls: {
-      rejectUnauthorized: false
-    }
-  });
-
-  let mailOptions = {
-    from: req.body.email,
-    to: "acommons1234@gmail.com",
-    subject: req.body.name,
-    html: "<b>" + req.body.comments + "</b>"
-  };
-
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      return console.log(error);
-    }
-    console.log("Email Sent: " + info.response);
-  });
-
-  res.render("contact");
-});
 
 // Handlebars
 app.engine(
@@ -70,6 +37,7 @@ app.use(passport.session()); // persistent login sessions
 // Routes
 require("./routes/apiRoutes")(app, passport);
 require("./routes/htmlRoutes")(app);
+require("./routes/email.js")(app);
 require("./routes/login")(app, passport);
 
 var syncOptions = { force: false };

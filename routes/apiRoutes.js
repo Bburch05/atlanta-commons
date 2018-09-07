@@ -1,5 +1,4 @@
 var db = require("../models");
-const nodemailer = require("nodemailer");
 
 module.exports = function(app, passport) {
   //Gmail post
