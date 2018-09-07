@@ -1,7 +1,8 @@
 
-<!------ Include the above in your HEAD tag ---------->
 
-    <div class="container">    
+
+    <div class="container">  
+          {{!-- Login  --}}
         <div id="loginbox" style="margin-top:50px;boder-radius:5px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
             <div class="panel panel-info" style="boder-radius:5px;" >
                     <div class="panel-heading">
@@ -40,7 +41,7 @@
                                     <!-- Button -->
 
                                     <div class="col-sm-12 controls">
-                                      <a id="btn-login" onclick="return false" href="#" class="btn btn-success">Login  </a>
+                                      <button id="btn-login" type="submit" class="btn btn-success">Login</button>
                                    
                                     </div>
                                 </div>
@@ -63,6 +64,7 @@
                         </div>                     
                     </div>  
         </div>
+        {{!-- Sign up --}}
         <div id="signupbox" style="display:none; margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                     <div class="panel panel-info">
                         <div class="panel-heading">
@@ -70,7 +72,7 @@
                             <div style="float:right; font-size: 85%; position: relative; top:-10px;"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()"><h4 style="color:wheat;">Sign In</h4></a></div>
                         </div>  
                         <div class="panel-body" >
-                            <form id="signupform" class="form-horizontal" role="form">
+                            <form id="signupform" class="form-horizontal" role="form" method="post" action="/signup">
                                                       
                                     
                                 <div class="form-group">
@@ -82,14 +84,14 @@
                                 <div class="form-group">
                                     <label for="password" class="col-md-3 control-label">Password</label>
                                     <div class="col-md-9">
-                                        <input type="password" class="form-control" name="passwd" id="signup-password" placeholder="Password">
+                                        <input type="password" class="form-control" name="password" id="signup-password" placeholder="Password">
                                     </div>
                                 </div>
                                   
                                 <div class="form-group">
                                     <label for="email" class="col-md-3 control-label">Email</label>
                                     <div class="col-md-9">
-                                        <input type="email" class="form-control" id="signup-email" aria-describedby="emailHelp" placeholder="Enter email">
+                                        <input type="email" class="form-control" name="email" id="signup-email" aria-describedby="emailHelp" placeholder="Enter email">
                                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 
                                     </div>
@@ -98,13 +100,13 @@
                                 <div class="form-group">
                                     <label for="firstname" class="col-md-3 control-label">First Name</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="firstname" id="signup-firstName" placeholder="First Name">
+                                        <input type="text" class="form-control" name="firstName" id="signup-firstName" placeholder="First Name">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="lastname" class="col-md-3 control-label">Last Name</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="lastname" id="signup-lastName" placeholder="Last Name">
+                                        <input type="text" class="form-control" name="lastName" id="signup-lastName" placeholder="Last Name">
                                     </div>
                                 </div>
                                 
@@ -225,23 +227,18 @@
                                     </select>
                                     </div>
                                 </div>                        
-                               {{!-- <div class="form-group">
-                                <label for="profilepic">Profile Picture</label>
-                                
-                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                                </div> --}}
                                  <div class="form-group">
                                     <div class="col-md-3">
                                     <label for="profilepic">Profile Picture</label>
                                     </div>
                                     <div class="col-md-9">
-                                         <input id="profile-pic" type="file" class="form-control" name="myImage" accept="image/*"/>
+                                         <input id="profile-pic" type="file" class="form-control" name="profPic" accept="image/*"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <!-- Button -->                                        
                                     <div class="col-md-offset-3 col-md-9">
-                                        <button id="btn-signup" type="button" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up</button>
+                                        <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up</button>
                                     </div>
                                 </div>
                                 
