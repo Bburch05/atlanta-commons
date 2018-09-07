@@ -1,35 +1,6 @@
 var db = require("../models");
 
 module.exports = function(app, passport) {
-  //Gmail post
-  app.post("/contact", function(req, res) {
-    let transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: "acommons1234@gmail.com",
-        pass: "atlantacommons"
-      },
-      tls: {
-        rejectUnauthorized: false
-      }
-    });
-
-    let mailOptions = {
-      from: req.body.email,
-      to: "acommons1234@gmail.com",
-      subject: req.body.name,
-      html: "<b>" + req.body.comments + "</b>"
-    };
-
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        return console.log(error);
-      }
-      console.log("Email Sent: " + info.response);
-    });
-
-    res.render("contact");
-  });
   // Get all Posts
   app.get("/api/posts/:offset?/", function(req, res) {
     var queryOffset;
@@ -158,7 +129,8 @@ module.exports = function(app, passport) {
       }).then(function(dbExample) {
         res.json(dbExample);
       });
-    } else {
+    }
+    else{
       res.redirect("/Log");
     }
   });

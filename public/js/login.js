@@ -1,23 +1,48 @@
-var CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/atlanta-commons/upload";
-var CLOUDINARY_UPLOAD_PRESET = "qie6uzuq";
-//Need to match up to the div with the User image tag
-var imgThumbnail = $("#userPic");
-//Need to match up with the picture upload input
-var imgUpload = $("#profile-pic");
+
+$(document).on("change", "#profile-pic", function(event) {
+  event.preventDefault();
+  createPic(event);
+});
+
+function createPic(event) {
+  var cloudPreset = "qie6uzuq";
+  var imgUpload = event.target.files[0];
+  var formData = new FormData();
+  formData.append("file", imgUpload);
+  formData.append("upload_preset", cloudPreset);
+  uploadPicture(formData);
+}
+
+function uploadPicture(formData) {
+  var cloudURL = "https://api.cloudinary.com/v1_1/atlanta-commons/upload";
+  axios({
+    url: cloudURL,
+    method: "POST",
+    headers: {
+      // baseURL: process.env.cloudURL,
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    data: formData
+  })
+    .then(function(res) {
+      userPic = res.data.secure_url;
+      return userPic;
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
+}
 
 $(document).on("click", "#btn-signup", function(event) {
   event.preventDefault();
 
-  console.log(
-    $("#signup-firstName")
-      .val()
-      .trim()
-  );
-  console.log(
-    $("#signup-lastName")
-      .val()
-      .trim()
-  );
+  console.log($("#signup-firstName")
+    .val()
+   .trim());
+  console.log($("#signup-lastName")
+    .val()
+    .trim());
+
 
   var newUser = {
     username: $("#signup-username")
@@ -35,7 +60,7 @@ $(document).on("click", "#btn-signup", function(event) {
     email: $("#signup-email")
       .val()
       .trim(),
-    userPic: "https://i.imgur.com/WLSTfG6.png",
+    userPic: userPic,
     neighborhood: $("#signup-neighborhood")
       .val()
       .trim()
