@@ -1,8 +1,8 @@
-
 $(document).on("change", "#profile-pic", function(event) {
   event.preventDefault();
   createPic(event);
 });
+
 
 function createPic(event) {
   var cloudPreset = "qie6uzuq";
@@ -33,4 +33,12 @@ function uploadPicture(formData) {
     });
 }
 
+$("#signup-firstName").bind("keyup blur", function() {
+  var node = $(this);
+  node.val(node.val().replace(/[^a-z ]/g, ""));
+});
 
+$("#signup-lastName").bind("keyup blur", function() {
+  var node = $(this);
+  node.val(node.val().replace(/[^a-z ]/g, ""));
+});

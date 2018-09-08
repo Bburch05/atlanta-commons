@@ -5,40 +5,6 @@ var $address = $("#address");
 var $neighborhood = $("#neighborhood");
 var $submitBtn = $("#newPost");
 
-$(document).on("change", "#profile-pic", function(event) {
-  event.preventDefault();
-  createPic(event);
-});
-
-function createPic(event) {
-  var cloudPreset = "qie6uzuq";
-  var imgUpload = event.target.files[0];
-  var formData = new FormData();
-  formData.append("file", imgUpload);
-  formData.append("upload_preset", cloudPreset);
-  uploadPicture(formData);
-}
-
-function uploadPicture(formData) {
-  var cloudURL = "https://api.cloudinary.com/v1_1/atlanta-commons/upload";
-  axios({
-    url: cloudURL,
-    method: "POST",
-    headers: {
-      // baseURL: process.env.cloudURL,
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    data: formData
-  })
-    .then(function(res) {
-      userPic = res.data.secure_url;
-      return userPic;
-    })
-    .catch(function(err) {
-      console.log(err);
-    });
-}
-
 // The API object contains methods for each kind of request we'll make
 var API = {
   savePost: function(post) {
@@ -93,12 +59,44 @@ var API = {
   }
 };
 
+// refreshExamples gets new examples from the db and repopulates the list
+// var refreshExamples = function() {
+//   API.getExamples().then(function(data) {
+//     var $examples = data.map(function(example) {
+//       var $a = $("<a>")
+//         .text(example.text)
+//         .attr("href", "/example/" + example.id);
+
+//       var $li = $("<li>")
+//         .attr({
+//           class: "list-group-item",
+//           "data-id": example.id
+//         })
+//         .append($a);
+
+//       var $button = $("<button>")
+//         .addClass("btn btn-danger float-right delete")
+//         .text("ｘ");
+
+//       $li.append($button);
+
+//       return $li;
+//     });
+
+//     $exampleList.empty();
+//     $exampleList.append($examples);
+//   });
+// };
+
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function(event) {
   event.preventDefault();
 
-  var userImage = userPic;
+  //placeholder for file upload
+  var userImage = "https://i.imgur.com/TpqwWl6.jpg";
+  //placeholder for User Id
+  var posterId = 1;
 
   var post = {
     title: $postTitle.val(),
@@ -107,6 +105,7 @@ var handleFormSubmit = function(event) {
     image: userImage,
     address: $address.val(),
     neighborhood: $neighborhood.val(),
+    UserId: posterId
   };
 
   if (!(post.text && post.title && post.address)) {
@@ -122,6 +121,18 @@ var handleFormSubmit = function(event) {
   $text.val("");
   $address.val("");
 };
+
+// handleDeleteBtnClick is called when an example's delete button is clicked
+// Remove the example from the db and refresh the list
+// var handleDeleteBtnClick = function() {
+//   var idToDelete = $(this)
+//     .parent()
+//     .attr("data-id");
+
+//   API.deleteExample(idToDelete).then(function() {
+//     refreshExamples();
+//   });
+// };
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);

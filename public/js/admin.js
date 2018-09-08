@@ -10,11 +10,14 @@ $(".maindiv1").on("click", function(e) {
   $("#addiv4").hide();
   $("#addiv1").show();
 
-  $.ajax("/a", {
-    type: "GET"
-  }).then(function() {
-    // Reload the page to get the updated list
-  });
+  // $.ajax("/abc", {
+  //   type: "GET"
+  //   // 'success':function()
+  // {
+  //   window.location.href="/a";
+  //   $("#addiv1").show();
+  // }
+  // });
 });
 $(".maindiv2").on("click", function(e) {
   e.preventDefault();
@@ -57,6 +60,12 @@ $(".remOVeUser").on("click", function(event) {
   // Send the DELETE request.
   $.ajax("/api/users/" + id, {
     type: "DELETE"
+    // 'success':function()
+    // {
+    //   setTimeout(function () {
+    //     window.location.href = "/a"; //will redirect to your blog page (an ex: blog.html)
+    //  }, 2000);
+    // }
   }).then(function() {
     console.log("Row Deleted");
     // Reload the page to get the updated list

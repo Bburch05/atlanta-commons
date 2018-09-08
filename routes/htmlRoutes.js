@@ -85,7 +85,7 @@ module.exports = function(app) {
       neigh: object4
     };
 
-    res.render("a", headob);
+    res.render("admin", headob);
   });
 
   app.get("/Log", function(req, res) {

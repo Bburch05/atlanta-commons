@@ -1,6 +1,10 @@
 .list-group-item {
   line-height: 2.5;
 }
+.divpan{
+  height: 35px;
+  
+}
 .us{
   margin-top: 20px;
   padding-top: 5px;
@@ -79,6 +83,10 @@ h4 {
   height: 322px;
   background-color: #f4511e;
 
+}
+select{
+  display:inline;
+  border: #818181 solid 1px;
 }
 .profilepicnew{
 width: 50px;
