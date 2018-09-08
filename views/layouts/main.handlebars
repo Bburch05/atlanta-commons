@@ -26,7 +26,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#myPage"><img src="./imges/logo2.png" class="logo" ></a>
+        <a class="navbar-brand" href="#myPage">
+          <img src="./imges/logo2.png" class="logo">
+        </a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
@@ -49,44 +51,46 @@
       </div>
     </div>
   </nav>
-  <br><br>
- <div class="row">
-   <div class="col-md-2"></div>
-					<div class="col-md-8">
-						<div id="myCarousel" class="carousel slide slider1" data-ride="carousel">
-							<ol class="carousel-indicators">
-								<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-								<li data-target="#myCarousel" data-slide-to="1"></li>
-								<li data-target="#myCarousel" data-slide-to="2"></li>
-							</ol>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div id="myCarousel" class="carousel slide slider1" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
 
-							<div class="carousel-inner">
-								<div class="item active">
-									<img src="./imges/new1.jpg" alt="Atlanta">
-								</div>
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="./imges/new1.jpg" alt="Atlanta">
+          </div>
 
-								<div class="item">
-									<img src="./imges/new2.jpg" alt="Atlanta">
-								</div>
+          <div class="item">
+            <img src="./imges/new2.jpg" alt="Atlanta">
+          </div>
 
-								<div class="item">
-									<img src="./imges/new3.jpg" alt="Atlanta">
-								</div>
-							</div>
+          <div class="item">
+            <img src="./imges/new3.jpg" alt="Atlanta">
+          </div>
+        </div>
 
-							<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-								<span class="glyphicon glyphicon-chevron-left"></span>
-								<span class="sr-only">Previous</span>
-							</a>
-							<a class="right carousel-control" href="#myCarousel" data-slide="next">
-								<span class="glyphicon glyphicon-chevron-right"></span>
-								<span class="sr-only">Next</span>
-							</a>
-						</div>
-					</div>
-          <div class="col-md-2"></div>
-            </div>
-  {{!-- <div class="jumbotron text-center">
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+  {{!--
+  <div class="jumbotron text-center">
     <h1>Atlanta Commons</h1>
     <p></p>
     <div class="container">
@@ -101,22 +105,39 @@
         </div>
       </div>
     </div>
-  </div> --}}
+  </div> --}} {{{body}}} {{!-- .................................................................................. --}}
 
-  {{{body}}}
 
-  {{!-- .................................................................................. --}}
-  
+  <footer class="text-center">
+<br><br><br><br>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h6>
+            <span class="glyphicon glyphicon-map-marker"></span>23345 Country Club Dr W,
+            <br> Boca Raton,GA 33428</h6>
+           
 
-  <footer class="container-fluid text-center">
-    <a href="#myPage" title="To Top">
-      <span class="glyphicon glyphicon-chevron-up"></span>
-    </a>
-    <p>FOOTER</p>
+        </div>
+        <div class="col-md-4">
+          <h6>
+            <span class="glyphicon glyphicon-phone"></span> +1(151)-515-1515
+            <br>
+            <span class="glyphicon glyphicon-envelope"></span> Atlantacom@gmail.com</h6>
+            <br><br><br>
+            Copyrights <span class="glyphicon glyphicon-copyright-mark"></span><h6>  Atlanta Commons</h6>
+        </div>
+        <div class="col-md-4">
+          <a href="#myPage" title="To Top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+          </a>
+        </div>
+      </div>
+    </div>
   </footer>
 
   <script src="./js/main.js"></script>
-  
+
 
 
   <script>
@@ -158,14 +179,17 @@
 
 
     $('#exampleModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('whatever') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-title').text('Post an Issue')
-  modal.find('.modal-body input').val(recipient)
-})
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var recipient = button.data('whatever') // Extract info from data-* attributes
+      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+      var modal = $(this)
+      modal.find('.modal-title').text('Post an Issue')
+      modal.find('.modal-body input').val(recipient)
+    })
+
+
+    
   </script>
 
 </body>

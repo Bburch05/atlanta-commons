@@ -1,5 +1,3 @@
-// Get references to page elements
-
 var $postTitle = $("#post-title");
 var $text = $("#detail-text");
 var $address = $("#address");

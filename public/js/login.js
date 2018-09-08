@@ -31,3 +31,13 @@ function uploadPicture(formData) {
       console.log(err);
     });
 }
+
+$("#signup-firstName").bind("keyup blur", function() {
+  var node = $(this);
+  node.val(node.val().replace(/[^a-z ]/g, ""));
+});
+
+$("#signup-lastName").bind("keyup blur", function() {
+  var node = $(this);
+  node.val(node.val().replace(/[^a-z ]/g, ""));
+});
