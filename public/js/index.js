@@ -7,6 +7,41 @@ var $neighborhood = $("#neighborhood");
 var $submitBtn = $("#newPost");
 
 // The API object contains methods for each kind of request we'll make
+$(document).on("change", "#post-image", function(event) {
+  event.preventDefault();
+  createPic(event);
+});
+
+function createPic(event) {
+  var cloudPreset = "qie6uzuq";
+  var imgUpload = event.target.files[0];
+  var formData = new FormData();
+  formData.append("file", imgUpload);
+  formData.append("upload_preset", cloudPreset);
+  uploadPicture(formData);
+}
+
+function uploadPicture(formData) {
+  var cloudURL = "https://api.cloudinary.com/v1_1/atlanta-commons/upload";
+  axios({
+    url: cloudURL,
+    method: "POST",
+    headers: {
+      // baseURL: process.env.cloudURL,
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    data: formData
+  })
+    .then(function(res) {
+      userPic = res.data.secure_url;
+      return userPic;
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
+}
+
+
 var API = {
   savePost: function(post) {
     return $.ajax({
@@ -65,7 +100,7 @@ var handleFormSubmit = function(event) {
   event.preventDefault();
 
   //placeholder for file upload
-  var userImage = "https://i.imgur.com/TpqwWl6.jpg";
+  var userImage = userPic;
   //placeholder for User Id
 
   var post = {

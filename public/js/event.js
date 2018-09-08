@@ -5,7 +5,7 @@ var $address = $("#address");
 var $neighborhood = $("#neighborhood");
 var $submitBtn = $("#newPost");
 
-$(document).on("change", "#profile-pic", function(event) {
+$(document).on("change", "#post-image", function(event) {
   event.preventDefault();
   createPic(event);
 });
