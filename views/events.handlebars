@@ -19,7 +19,147 @@
       </div>
     </div>
   </div>
-  {{!-- Begin Modal --}}
+  
+</div>
+
+
+
+<div class="container">
+
+  {{#each Post}}
+  <div class="row" id="border1">
+    <div class="col-sm-2 col-md-2 text-center">
+      <img src={{User.profPic}} class="img-circle imgissue" alt="Avatar">
+    </div>
+
+    <div class="col-sm-10">
+      <div class="row header1">
+        <div class="col-md-6">
+          <h3 class="padding1 header1">
+            <p>{{title}}</p>
+            <p>Posted by: {{User.username}}</p>
+            <small class="header1">{{createdAt}}</small>
+          </h3>
+        </div>
+        <div class="col-md-6">
+          <h3 class="padding1 header1">
+            <p>Neighborhood</p>
+            <small class="header1">{{neighborhood}}</small>
+          </h3>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <p>{{text}}</p>
+          </div>
+          <div class="col-md-4">
+          <button type="button" class="btn btn-primary btn-lg speechbtn" data-id="{{this.id}}" data-text="{{text}}">Read It For Me!!</button>
+          </div>
+          <br>
+
+
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <img class="img-responsive imgnew" src={{image}} alt="eventPic">
+
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-6">
+          <h3>Location : </h3>
+          <p>{{address}}</p>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3316.411492405979!2d-84.3914761847922!3d33.775870480681995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f5046684d8f1f1%3A0x71b6d8f11e4667d4!2s770+Spring+St+NW%2C+Atlanta%2C+GA+30308!5e0!3m2!1sen!2sus!4v1535673844371"
+            width="400" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            {{!--
+            <button class="btn btn-primary addCmt" data-id="{{this.id}}">Add Comment</button> --}}
+            <button type="button" class="btn btn-primary btn-lg addbtn" data-id="{{this.id}}" data-toggle="modal" data-target="#exampleModal2">
+              Add Comment
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <br>
+                    <br>
+                    <h5 class="modal-title" id="exampleModalLabel">Adding Comment</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="form-group">
+                        <label for="cmt-text" class="col-form-label">Comment:</label>
+                        <input type="text" class="form-control" id="cmtText" placeholder="Enter Your Comment Here ....">
+                        <br>
+                        <br>
+                        <br>
+                        <a href="/" class="btn btn-primary addNewCmt">Add</a>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            {{!--
+            <button class="btn btn-primary viewCmt" data-id="{{this.id}}">View Comments</button> --}}
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-lg ViewCmt" data-id=" {{this.id}}" data-toggle="modal" data-target="#myModal3">
+              View Comments
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <br>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Comments</h4>
+                    <br>
+                  </div>
+                  <div style="border:0" class="modal-body bodycmt" >
+                    <br>
+                  </div>
+                  <div class="modal-footer">
+                    <br>
+                    <br>
+                  </div>
+                  <button type="button" class="btn btn-primary" style="margin:auto;display:block;margin-bottom:2px;" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+
+      </div>
+    </div>
+    <br>
+    <br>
+
+  </div>
+  <br>
+  <br> {{/each}}
+
+{{!-- Begin Modal --}}
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -177,145 +317,5 @@
     </div>
   </div>
   {{!-- End Modal --}}
-</div>
-
-
-
-<div class="container">
-
-  {{#each Post}}
-  <div class="row" id="border1">
-    <div class="col-sm-2 col-md-2 text-center">
-      <img src={{User.profPic}} class="img-circle imgissue" alt="Avatar">
-    </div>
-
-    <div class="col-sm-10">
-      <div class="row header1">
-        <div class="col-md-6">
-          <h3 class="padding1 header1">
-            <p>{{title}}</p>
-            <p>Posted by: {{User.username}}</p>
-            <small class="header1">{{createdAt}}</small>
-          </h3>
-        </div>
-        <div class="col-md-6">
-          <h3 class="padding1 header1">
-            <p>Neighborhood</p>
-            <small class="header1">{{neighborhood}}</small>
-          </h3>
-        </div>
-
-      </div>
-      <div class="row">
-        <div class="col-md-8">
-          <p>{{text}}</p>
-          </div>
-          <div class="col-md-4">
-          <button type="button" class="btn btn-primary btn-lg speechbtn" data-id="{{this.id}}" data-text="{{text}}">Read It For Me!!</button>
-          </div>
-          <br>
-
-
-      </div>
-
-      <div class="row">
-        <div class="col-sm-4">
-          <img class="img-responsive imgnew" src={{image}} alt="eventPic">
-
-        </div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-6">
-          <h3>Location : </h3>
-          <p>{{address}}</p>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3316.411492405979!2d-84.3914761847922!3d33.775870480681995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f5046684d8f1f1%3A0x71b6d8f11e4667d4!2s770+Spring+St+NW%2C+Atlanta%2C+GA+30308!5e0!3m2!1sen!2sus!4v1535673844371"
-            width="400" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            {{!--
-            <button class="btn btn-primary addCmt" data-id="{{this.id}}">Add Comment</button> --}}
-            <button type="button" class="btn btn-primary btn-lg addbtn" data-id="{{this.id}}" data-toggle="modal" data-target="#exampleModal2">
-              Add Comment
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <br>
-                    <br>
-                    <h5 class="modal-title" id="exampleModalLabel">Adding Comment</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <form>
-                      <div class="form-group">
-                        <label for="cmt-text" class="col-form-label">Comment:</label>
-                        <input type="text" class="form-control" id="cmtText" placeholder="Enter Your Comment Here ....">
-                        <br>
-                        <br>
-                        <br>
-                        <a href="/" class="btn btn-primary addNewCmt">Add</a>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                      </div>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            {{!--
-            <button class="btn btn-primary viewCmt" data-id="{{this.id}}">View Comments</button> --}}
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary btn-lg ViewCmt" data-id=" {{this.id}}" data-toggle="modal" data-target="#myModal3">
-              View Comments
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <br>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">Comments</h4>
-                    <br>
-                  </div>
-                  <div style="border:0" class="modal-body bodycmt" >
-                    <br>
-                  </div>
-                  <div class="modal-footer">
-                    <br>
-                    <br>
-                  </div>
-                  <button type="button" class="btn btn-primary" style="margin:auto;display:block;margin-bottom:2px;" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-
-
-      </div>
-    </div>
-    <br>
-    <br>
-
-  </div>
-  <br>
-  <br> {{/each}}
-
-
   <script defer src="./js/event.js"></script>
 </div>
