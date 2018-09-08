@@ -24,7 +24,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    profPic: DataTypes.STRING
+    profPic: {
+      type: DataTypes.STRING,
+      defaultValue: "./imges/a2.png"
+    }
   });
 
   Users.associate = function(models) {
