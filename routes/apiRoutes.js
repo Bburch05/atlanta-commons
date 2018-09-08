@@ -1,7 +1,7 @@
 var db = require("../models");
 
 module.exports = function(app, passport) {
-  // Get all Posts
+  // Get all PostsS
   app.get("/api/posts/:offset?/", function(req, res) {
     var queryOffset;
     if (!req.params.offset) {
