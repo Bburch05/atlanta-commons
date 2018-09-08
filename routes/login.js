@@ -1,4 +1,4 @@
-var db = require("../models");
+// var db = require("../models");
 
 module.exports = function(app, passport) {
   app.post(
@@ -21,6 +21,9 @@ module.exports = function(app, passport) {
 
   app.get("/logout", function(req, res) {
     req.session.destroy(function(err) {
+      if (err) {
+        throw err;
+      }
       res.redirect("/");
     });
   });
