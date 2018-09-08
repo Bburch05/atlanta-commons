@@ -26,7 +26,8 @@ function uploadPicture(formData) {
   })
     .then(function(res) {
       userPic = res.data.secure_url;
-      return userPic;
+      $("#profile-pic").text(userPic);
+      console.log($("#profile-pic").text());
     })
     .catch(function(err) {
       console.log(err);
@@ -37,8 +38,8 @@ $(document).on("click", "#btn-signup", function(event) {
   event.preventDefault();
 
   console.log($("#signup-firstName")
-    .val()
-   .trim());
+      .val()
+      .trim());
   console.log($("#signup-lastName")
     .val()
     .trim());
@@ -60,7 +61,7 @@ $(document).on("click", "#btn-signup", function(event) {
     email: $("#signup-email")
       .val()
       .trim(),
-    userPic: userPic,
+    // userPic: userPic,
     neighborhood: $("#signup-neighborhood")
       .val()
       .trim()
