@@ -96,7 +96,7 @@ var handleFormSubmit = function(event) {
   //placeholder for file upload
   var userImage = "https://i.imgur.com/TpqwWl6.jpg";
   //placeholder for User Id
-  var posterId = 2;
+  var posterId = 1;
 
   var post = {
     title: $postTitle.val(),

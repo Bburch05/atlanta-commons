@@ -22,7 +22,7 @@
     </div>
   </div>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -175,29 +175,17 @@
 
                 </select>
               </div>
-              <br>
+              <br><br>
             </div>
 
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary" id="newPost">Create</button>
         </div>
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
 
   <div class="container-fluid">
     {{#each Post}}
@@ -330,4 +318,3 @@
 
 
   <script src="./js/index.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/typeit@VERSION_NUMBER/dist/typeit.min.js" />
