@@ -106,7 +106,7 @@ var handleFormSubmit = function(event) {
     postType: "event",
     image: userImage,
     address: $address.val(),
-    neighborhood: $neighborhood.val(),
+    neighborhood: $neighborhood.val()
   };
 
   if (!(post.text && post.title && post.address)) {

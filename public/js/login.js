@@ -1,4 +1,3 @@
-
 $(document).on("change", "#profile-pic", function(event) {
   event.preventDefault();
   createPic(event);
@@ -32,5 +31,3 @@ function uploadPicture(formData) {
       console.log(err);
     });
 }
-
-

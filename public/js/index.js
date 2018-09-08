@@ -41,7 +41,6 @@ function uploadPicture(formData) {
     });
 }
 
-
 var API = {
   savePost: function(post) {
     return $.ajax({
@@ -95,7 +94,6 @@ var API = {
   }
 };
 
-
 var handleFormSubmit = function(event) {
   event.preventDefault();
 
@@ -109,7 +107,7 @@ var handleFormSubmit = function(event) {
     postType: "issue",
     image: userImage,
     address: $address.val(),
-    neighborhood: $neighborhood.val(),
+    neighborhood: $neighborhood.val()
   };
 
   if (!(post.text && post.title && post.address)) {
@@ -125,7 +123,6 @@ var handleFormSubmit = function(event) {
   $text.val("");
   $address.val("");
 };
-
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
