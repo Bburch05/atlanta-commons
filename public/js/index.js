@@ -5,8 +5,42 @@ var $neighborhood = $("#neighborhood");
 var $submitBtn = $("#newPost");
 
 // The API object contains methods for each kind of request we'll make
+$(document).on("change", "#post-image", function(event) {
+  event.preventDefault();
+  createPic(event);
+});
+
+function createPic(event) {
+  var cloudPreset = "qie6uzuq";
+  var imgUpload = event.target.files[0];
+  var formData = new FormData();
+  formData.append("file", imgUpload);
+  formData.append("upload_preset", cloudPreset);
+  uploadPicture(formData);
+}
+
+function uploadPicture(formData) {
+  var cloudURL = "https://api.cloudinary.com/v1_1/atlanta-commons/upload";
+  axios({
+    url: cloudURL,
+    method: "POST",
+    headers: {
+      // baseURL: process.env.cloudURL,
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    data: formData
+  })
+    .then(function(res) {
+      userPic = res.data.secure_url;
+      return userPic;
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
+}
+
 var API = {
-  savePost: function (post) {
+  savePost: function(post) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
@@ -16,7 +50,7 @@ var API = {
       data: JSON.stringify(post)
     });
   },
-  saveCmt: function (cmt, id) {
+  saveCmt: function(cmt, id) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
@@ -26,31 +60,31 @@ var API = {
       data: JSON.stringify(cmt)
     });
   },
-  getPosts: function () {
+  getPosts: function() {
     return $.ajax({
       url: "api/posts/",
       type: "GET"
     });
   },
-  getPostCmt: function (id) {
+  getPostCmt: function(id) {
     return $.ajax({
       url: "/api4/postsCmt/" + id,
       type: "GET"
     });
   },
-  getEvents: function () {
+  getEvents: function() {
     return $.ajax({
       url: "api/event/",
       type: "GET"
     });
   },
-  getIssues: function () {
+  getIssues: function() {
     return $.ajax({
       url: "api/issue/",
       type: "GET"
     });
   },
-  deletePost: function (id) {
+  deletePost: function(id) {
     return $.ajax({
       url: "api/posts/" + id,
       type: "DELETE"
@@ -58,11 +92,11 @@ var API = {
   }
 };
 
-var handleFormSubmit = function (event) {
+var handleFormSubmit = function(event) {
   event.preventDefault();
 
   //placeholder for file upload
-  var userImage = "https://i.imgur.com/TpqwWl6.jpg";
+  var userImage = userPic;
   //placeholder for User Id
 
   var post = {
@@ -79,7 +113,7 @@ var handleFormSubmit = function (event) {
     return;
   }
 
-  API.savePost(post).then(function () {
+  API.savePost(post).then(function() {
     location.reload();
   });
 
@@ -93,12 +127,12 @@ $submitBtn.on("click", handleFormSubmit);
 
 var gbid;
 
-$(".addbtn").on("click", function (event) {
+$(".addbtn").on("click", function(event) {
   event.preventDefault();
   gbid = $(this).data("id");
 });
 
-$(".addNewCmt").on("click", function (event) {
+$(".addNewCmt").on("click", function(event) {
   event.preventDefault();
   var userText = $("#cmtText").val();
   //placeholder for User Id
@@ -110,7 +144,7 @@ $(".addNewCmt").on("click", function (event) {
     PostId: id
   };
 
-  API.saveCmt(cmt, id).then(function () {
+  API.saveCmt(cmt, id).then(function() {
     location.reload();
   });
 
@@ -118,10 +152,10 @@ $(".addNewCmt").on("click", function (event) {
 });
 // $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
-$(".ViewCmt").on("click", function (event) {
+$(".ViewCmt").on("click", function(event) {
   event.preventDefault();
   var id = $(this).data("id");
-  API.getPostCmt(id).then(function (data) {
+  API.getPostCmt(id).then(function(data) {
     console.log(data);
     var res = data.Comments;
     for (var i = 0; i < res.length; i++) {
@@ -144,12 +178,12 @@ $(".ViewCmt").on("click", function (event) {
 
       h4.text(
         "Comment By: " +
-        data.Comments[i].User.firstName +
-        " " +
-        data.Comments[i].User.lastName +
-        "\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +
-        "On: " +
-        data.Comments[i].createdAt
+          data.Comments[i].User.firstName +
+          " " +
+          data.Comments[i].User.lastName +
+          "\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0" +
+          "On: " +
+          data.Comments[i].createdAt
       );
       h4.addClass("h4cmt");
       h4.appendTo(div);
@@ -158,7 +192,7 @@ $(".ViewCmt").on("click", function (event) {
   });
 });
 
-$(".speechbtn").on("click", function (event) {
+$(".speechbtn").on("click", function(event) {
   event.preventDefault();
   console.log("hi");
 

@@ -22,7 +22,9 @@
     </div>
   </div>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
+
+{{!-- New Issue Modal --}}
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -46,7 +48,7 @@
             <div class="form-group">
               <label for="image" class="col-form-label">Upload Image:</label>
               <br>
-              <input type="file" class="form-control" name="myImage" accept="image/*" />
+              <input type="file" class="form-control" name="myImage" id="post-image" accept="image/*" />
             </div>
 
             {{!--

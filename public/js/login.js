@@ -3,7 +3,6 @@ $(document).on("change", "#profile-pic", function(event) {
   createPic(event);
 });
 
-
 function createPic(event) {
   var cloudPreset = "qie6uzuq";
   var imgUpload = event.target.files[0];

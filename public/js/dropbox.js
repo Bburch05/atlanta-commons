@@ -1,6 +1,6 @@
-//Need to match up to the div with the User image tag
-var cloudPreset = "qie6uzuq";
-var cloudURL = "https://api.cloudinary.com/v1_1/atlanta-commons/upload";
+// //Need to match up to the div with the User image tag
+// var cloudPreset = "qie6uzuq";
+// var cloudURL = "https://api.cloudinary.com/v1_1/atlanta-commons/upload";
 
 // $(document).on("change", "#profile-pic", function(event) {
 //   event.preventDefault();
